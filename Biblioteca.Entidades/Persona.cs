@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Entidades
 {
-    public class Persona
+    public abstract class Persona
     {
-        private int _id;
-        private string _nombre;
-        private string _apellido;
-        private string _direccion;
-        private string _mail;
-        private long _telefono;
+        protected int _id;
+        protected string _nombre;
+        protected string _apellido;
+        protected string _direccion;
+        protected string _mail;
+        protected long _telefono;
     }
 }
