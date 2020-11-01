@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Entidades
 {
-    public class Class1
+    public class Cliente
     {
+        private int _id;
+        private DateTime _fechaAlta;
+        private bool _activo;
     }
 }
