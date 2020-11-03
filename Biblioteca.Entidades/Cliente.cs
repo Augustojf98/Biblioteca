@@ -8,35 +8,28 @@ using System.Threading.Tasks;
 namespace Biblioteca.Entidades
 {
     [DataContract]
-    public class Cliente : Persona
+    public class Cliente 
     {
-        private int _idCliente;
-        private DateTime _fechaAlta;
-        private bool _activo;
+        private int _codigo;
+        private string _nombre;
+        private string _apellido;
+        private string _direccion;
+        private long _telefono;
+        private string _mail; 
+       
+
+ 
 
         [DataMember]
-        public int IdPersona
+        public int Codigo
         {
             get
             {
-                return this._id;
+                return this._codigo;
             }
             set
             {
-                this._id = value;
-            }
-        }
-
-        [DataMember]
-        public int IdCliente
-        {
-            get
-            {
-                return this._idCliente;
-            }
-            set
-            {
-                this._idCliente = value;
+                this._codigo = value;
             }
         }
 
@@ -105,30 +98,9 @@ namespace Biblioteca.Entidades
             }
         }
 
-        [DataMember]
-        public DateTime FechaAlta
-        {
-            get
-            {
-                return this._fechaAlta;
-            }
-            set
-            {
-                this._fechaAlta = value;
-            }
-        }
-
-        [DataMember]
-        public bool Activo
-        {
-            get
-            {
-                return this._activo;
-            }
-            set
-            {
-                this._activo = value;
-            }
-        }
+      
+     
     }
+ 
 }
+
