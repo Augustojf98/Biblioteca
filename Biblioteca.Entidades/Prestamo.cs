@@ -11,25 +11,25 @@ namespace Biblioteca.Entidades
 
     public class Prestamo
     {
-        private int _numeroOperacion;
+        private int _id;
         private int _idCliente;
-        private DateTime _fechaHoraPrestamo;
-        private DateTime _fechaDevolucionTentativa;
-        private DateTime _fechaDevolucionReal;
-        private Cliente _cliente;
-        private Ejemplar _ejemplar; 
-
+        private int _idEjemplar;
+        private int _plazo; 
+        private DateTime _fechaAlta;
+        private DateTime _fechaBaja;
+        private DateTime _fechaBajaReal;
+  
         [DataMember]
 
-        public int NumeroOperacion
+        public int Id
         {
             get
             {
-                return this._numeroOperacion;
+                return this._id;
             }
             set
             {
-                this._numeroOperacion = value;
+                this._id = value;
             }
         }
 
@@ -46,51 +46,87 @@ namespace Biblioteca.Entidades
                 this._idCliente = value;
             }
         }
-
         [DataMember]
 
-        public DateTime FechaHoraPrestamo
+        public int IdEjemplar
         {
             get
             {
-                return this._fechaHoraPrestamo;
+                return this._idEjemplar;
             }
             set
             {
-                this._fechaHoraPrestamo = value;
+                this._idEjemplar = value;
             }
         }
 
         [DataMember]
 
-        public DateTime FechaDevolucionTentativa
+        public int Plazo
         {
             get
             {
-                return this._fechaDevolucionTentativa;
+                return this._plazo;
             }
             set
             {
-                this._fechaDevolucionTentativa = value;
+                this._plazo = value;
             }
         }
 
         [DataMember]
 
-        public DateTime FechaDevolucionReal
+        public DateTime FechaAlta
         {
             get
             {
-                return this._fechaDevolucionReal;
+                return this._fechaAlta;
+            }
+            set
+            {
+                this._fechaAlta = value;
+            }
+        }
+
+        [DataMember]
+
+        public DateTime FechaBaja
+        {
+            get
+            {
+                return this._fechaBaja;
+            }
+            set
+            {
+                this._fechaBaja = value;
+            }
+        }
+
+        [DataMember]
+
+        public DateTime FechaBajaReal
+        {
+            get
+            {
+                return this._fechaBajaReal;
             }
 
             set
             {
-                this._fechaDevolucionReal = value;
+                this._fechaBajaReal = value;
             }
         }
+        //que onda el plazo? deberia ser un calculo no? 
+        public Prestamo(int id, int idCliente, int idEjemplar, int plazo, string fechaAlta, string fechaBaja, string fechaBajaReal)
+        {
+            this._id = id;
+            this._idCliente = idCliente;
+            this._plazo = plazo;
+            this._fechaAlta = Convert.ToDateTime(fechaAlta);
+            this._fechaBaja = Convert.ToDateTime(fechaBaja);
+            this._fechaBajaReal = Convert.ToDateTime(fechaBajaReal);
 
-        //no estoy seguro como hacer el get set de un cliente y ejemplar. 
+        }
         
        
 

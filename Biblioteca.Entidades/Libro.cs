@@ -10,27 +10,25 @@ namespace Biblioteca.Entidades
     [DataContract]
     public class Libro
     {
-        private long _ISBN;
+        private long _id;
         private string _titulo;
         private string _autor;
         private int _edicion;
         private string _editorial;
-        private int _cantPaginas;
+        private int _paginas;
         private string _tema;
-        private int _stockPermanente;
-        private int _stockDisponible;
-
+       
        [DataMember]
 
-       public long ISBN
+       public long Id
         {
             get
             {
-                return this._ISBN;
+                return this._id;
             }
             set
             {
-                this._ISBN = value; 
+                this._id = value; 
             }
         }
 
@@ -90,15 +88,15 @@ namespace Biblioteca.Entidades
         }
         [DataMember]
 
-        public int CantPaginas
+        public int Paginas
         {
             get
             {
-                return this._cantPaginas; 
+                return this._paginas; 
             }
             set
             {
-                this._cantPaginas = value; 
+                this._paginas = value; 
             }
         }
 
@@ -116,32 +114,17 @@ namespace Biblioteca.Entidades
             }
         }
 
-        [DataMember]
-
-        public int StockPermanente
+       public Libro(int id, string titulo, string autor, int edicion, string editorial,int paginas, string tema)
         {
-            get
-            {
-                return this._stockPermanente; 
-            }
-            set
-            {
-                this._stockPermanente = value; 
-            }
+            this._id = id;
+            this._titulo = titulo;
+            this._autor = autor;
+            this._edicion = edicion;
+            this._editorial = editorial;
+            this._paginas = paginas;
+            this._tema = tema; 
         }
 
-        [DataMember]
-
-        public int StockDisponible
-        {
-            get
-            {
-                return this._stockDisponible; 
-            }
-            set
-            {
-                this._stockDisponible = value; 
-            }
-        }
+        
     }
 }

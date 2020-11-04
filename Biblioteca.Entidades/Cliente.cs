@@ -8,98 +8,57 @@ using System.Threading.Tasks;
 namespace Biblioteca.Entidades
 {
     [DataContract]
-    public class Cliente 
+    public class Cliente : Persona
     {
-        private int _codigo;
-        private string _nombre;
-        private string _apellido;
-        private string _direccion;
-        private long _telefono;
-        private string _mail; 
+        private int _idCliente;
+        private DateTime _fechaAlta;
+        private bool _activo; 
        
 
- 
-
         [DataMember]
-        public int Codigo
+        public int IdCliente
         {
             get
             {
-                return this._codigo;
+                return this._idCliente;
             }
             set
             {
-                this._codigo = value;
+                this._idCliente = value;
             }
         }
 
         [DataMember]
-        public string Nombre
+        public DateTime FechaAlta
         {
             get
             {
-                return this._nombre;
+                return this._fechaAlta;
             }
             set
             {
-                this._nombre = value;
+                this._fechaAlta = value;
             }
         }
 
         [DataMember]
-        public string Apellido
+        public bool Activo
         {
             get
             {
-                return this._apellido;
+                return this._activo;
             }
             set
             {
-                this._apellido = value;
+                this._activo = value;
             }
         }
-
-        [DataMember]
-        public string Mail
+        public Cliente(int idcliente,string fechaAlta,bool activo,int id, string nombre, string apellido, string direccion, long telefono, string mail):base(id, nombre, apellido, direccion, telefono, mail)
         {
-            get
-            {
-                return this._mail;
-            }
-            set
-            {
-                this._mail = value;
-            }
+            this._idCliente = idcliente;
+            this._fechaAlta = Convert.ToDateTime(fechaAlta);
+            this._activo = activo; 
         }
-
-        [DataMember]
-        public string Direccion
-        {
-            get
-            {
-                return this._direccion;
-            }
-            set
-            {
-                this._direccion = value;
-            }
-        }
-
-        [DataMember]
-        public long Telefono
-        {
-            get
-            {
-                return this._telefono;
-            }
-            set
-            {
-                this._telefono = value;
-            }
-        }
-
-      
-     
     }
  
 }

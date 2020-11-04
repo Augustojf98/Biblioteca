@@ -10,51 +10,51 @@ namespace Biblioteca.Entidades
     [DataContract]
     public class Ejemplar
     {
-        private int _codigo;
-        private int _codigoLibro;
-        private string _descripcion;
+        private int _id;
+        private int _idLibro;
+        private string _observaciones;
         private double _precio;
         private DateTime _fechaAlta;
-        private Libro _libro; 
+      
 
         [DataMember]
 
-        public int Codigo
+        public int Id
         {
             get
             {
-                return this._codigo; 
+                return this._id; 
             }
             set
             {
-                this._codigo = value; 
+                this._id = value; 
             }
         }
 
         [DataMember]
 
-        public int CodigoLibro
+        public int IdLibro
         {
             get
             {
-                return this._codigoLibro; 
+                return this._idLibro; 
             }
             set
             {
-                this._codigoLibro = value; 
+                this._idLibro = value; 
             }
         }
 
         [DataMember]
-        public string Descripcion
+        public string Observaciones
         {
             get
             {
-                return this._descripcion; 
+                return this._observaciones; 
             }
             set
             {
-                this._descripcion = value; 
+                this._observaciones = value; 
             }
         }
 
@@ -85,7 +85,14 @@ namespace Biblioteca.Entidades
                 this._fechaAlta = value; 
             }
         }
-        //falta libro. 
+        public Ejemplar(int id, int idLibro,string observaciones, double precio, string fechaAlta)
+        {
+            this._id = id;
+            this._idLibro = idLibro;
+            this._observaciones = observaciones;
+            this._precio = precio;
+            this._fechaAlta = Convert.ToDateTime(fechaAlta); 
+        }
     }
 
 }
