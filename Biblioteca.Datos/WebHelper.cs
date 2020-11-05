@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Biblioteca.Entidades;
 
-namespace NLayer.Datos
+namespace Biblioteca.Datos
 {
     public static class WebHelper
     {
