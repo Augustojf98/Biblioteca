@@ -53,8 +53,15 @@ namespace Biblioteca.Entidades
                 this._activo = value;
             }
         }
-        public Cliente(int idcliente,string fechaAlta,bool activo,int id, string nombre, string apellido, string direccion, long telefono, string mail):base(id, nombre, apellido, direccion, telefono, mail)
+
+        public Cliente(int idcliente, string fechaAlta, bool activo, int id, string nombre, string apellido, string direccion, long telefono, string mail)
         {
+            this._id = id;
+            this._nombre = nombre;
+            this._apellido = apellido;
+            this._direccion = direccion;
+            this._telefono = telefono;
+            this._mail = mail;
             this._idCliente = idcliente;
             this._fechaAlta = Convert.ToDateTime(fechaAlta);
             this._activo = activo; 

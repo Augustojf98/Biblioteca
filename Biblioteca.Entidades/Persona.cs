@@ -18,8 +18,7 @@ namespace Biblioteca.Entidades
         protected string _mail;
 
         [DataMember]
-
-        public int ID
+        public int Id
         {
             get
             {
@@ -30,6 +29,7 @@ namespace Biblioteca.Entidades
                 this._id = value;
             }
         }
+
         public string Nombre
         {
             get
@@ -39,6 +39,18 @@ namespace Biblioteca.Entidades
             set
             {
                 this._nombre = value;
+            }
+        }
+
+        public string Apellido
+        {
+            get
+            {
+                return this._apellido;
+            }
+            set
+            {
+                this._apellido = value;
             }
         }
 
