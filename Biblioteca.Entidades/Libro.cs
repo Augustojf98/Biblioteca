@@ -10,7 +10,7 @@ namespace Biblioteca.Entidades
     [DataContract]
     public class Libro
     {
-        private long _id;
+        private int _id;
         private string _titulo;
         private string _autor;
         private int _edicion;
@@ -20,7 +20,7 @@ namespace Biblioteca.Entidades
        
        [DataMember]
 
-       public long Id
+       public int Id
         {
             get
             {

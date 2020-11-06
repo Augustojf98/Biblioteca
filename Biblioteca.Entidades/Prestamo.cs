@@ -33,6 +33,18 @@ namespace Biblioteca.Entidades
             }
         }
 
+        public bool EstaAbierto()
+        {
+            if(this._fechaBajaReal == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         [DataMember]
 
         public int IdCliente

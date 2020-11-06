@@ -1,4 +1,5 @@
-﻿using Biblioteca.Entidades;
+﻿using Biblioteca.Datos;
+using Biblioteca.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,18 @@ namespace Biblioteca.Negocio
 {
     public class BibliotecaNegocio
     {
-        private List<Cliente> _clientes;
-        private List<Libro> _libros;
-        private List<Ejemplar> _ejemplares;
+        private ClienteMapper clienteMapper;
+        private LibroMapper libroMapper;
+        private PrestamoMapper prestamoMapper;
+        private EjemplarMapper ejemplarMapper;
+
+        public BibliotecaNegocio()
+        {
+            clienteMapper = new ClienteMapper();
+            libroMapper = new LibroMapper();
+            ejemplarMapper = new EjemplarMapper();
+            prestamoMapper = new PrestamoMapper();
+        }
 
     }
 }

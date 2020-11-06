@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Biblioteca.Entidades;
-using Biblioteca.Datos;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLayer.Datos
+namespace Biblioteca.Datos
 {
     public class ClienteMapper
     {
