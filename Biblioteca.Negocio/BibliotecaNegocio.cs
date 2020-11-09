@@ -141,11 +141,36 @@ namespace Biblioteca.Negocio
             }
         }
 
-        public void IngresarCliente(string nombre, string apellido, string direccion, long telefono, string mail, bool activo)
+        public int IngresarCliente(string nombre, string apellido, string direccion, long telefono, string mail, bool activo)
         {
+            List<Cliente> clientes = this.GetClientes();
             int idNuevoCliente = this.UltimoCodCliente() + 1;
+
             Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToShortDateString(), activo, idNuevoCliente, nombre, apellido, direccion, telefono, mail);
-            clienteMapper.Insert(cliente);
+
+            foreach (Cliente c in clientes)
+            {
+                if(c.Nombre.ToUpper() == cliente.Nombre.ToUpper() && c.Apellido.ToUpper() == cliente.Apellido.ToUpper())
+                {
+                    throw new Exception(string.Format("Ya existe un cliente llamado \"{0} {1}\"", nombre, apellido));
+                }
+                if (c.Telefono == cliente.Telefono || c.Mail.ToUpper() == cliente.Mail.ToUpper())
+                {
+                    throw new Exception(string.Format("El email \"{0}\" o el teléfono \"{1}\" se encuentran ya registrados.", mail, telefono));
+                }
+            }
+
+            TransactionResult result = clienteMapper.Insert(cliente);
+
+            if (result.IsOk)
+            {
+                return result.Id;
+            }
+            else
+            {
+                throw new Exception(string.Format("Ocurrió un error en el servidor. Detalle: \"{0}\"", result.Error));
+            }
+
         }
 
         private int UltimoCodCliente()
