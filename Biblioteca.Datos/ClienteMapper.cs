@@ -30,6 +30,17 @@ namespace Biblioteca.Datos
             return resultadoTransaccion;
         }
 
+        public TransactionResult Delete(Cliente cliente)
+        {
+            NameValueCollection obj = ReverseMap(cliente);
+
+            string result = WebHelper.Delete("/cliente", obj);
+
+            TransactionResult resultadoTransaccion = MapResultado(result);
+
+            return resultadoTransaccion;
+        }
+
         private List<Cliente> MapList(string json)
         {
             List<Cliente> lst = JsonConvert.DeserializeObject<List<Cliente>>(json);

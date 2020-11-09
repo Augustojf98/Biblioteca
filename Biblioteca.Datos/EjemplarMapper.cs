@@ -36,6 +36,17 @@ namespace Biblioteca.Datos
             return resultadoTransaccion;
         }
 
+        public TransactionResult Put(Ejemplar ejemplar)
+        {
+            NameValueCollection obj = ReverseMap(ejemplar);
+
+            string result = WebHelper.Put("/Biblioteca/Ejemplares", obj);
+
+            TransactionResult resultadoTransaccion = MapResultado(result);
+
+            return resultadoTransaccion;
+        }
+
         private List<Ejemplar> MapList(string json)
         {
             List<Ejemplar> lst = JsonConvert.DeserializeObject<List<Ejemplar>>(json);

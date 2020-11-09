@@ -29,6 +29,28 @@ namespace Biblioteca.Datos
             return resultadoTransaccion;
         }
 
+        public TransactionResult Delete(Prestamo prestamo)
+        {
+            NameValueCollection obj = ReverseMap(prestamo);
+
+            string result = WebHelper.Delete("/Biblioteca/Prestamos", obj);
+
+            TransactionResult resultadoTransaccion = MapResultado(result);
+
+            return resultadoTransaccion;
+        }
+
+        public TransactionResult Put(Prestamo prestamo)
+        {
+            NameValueCollection obj = ReverseMap(prestamo);
+
+            string result = WebHelper.Put("/Biblioteca/Prestamos", obj);
+
+            TransactionResult resultadoTransaccion = MapResultado(result);
+
+            return resultadoTransaccion;
+        }
+
         private List<Prestamo> MapList(string json)
         {
             List<Prestamo> lst = JsonConvert.DeserializeObject<List<Prestamo>>(json);
