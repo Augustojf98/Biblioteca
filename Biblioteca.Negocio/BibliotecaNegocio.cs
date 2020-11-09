@@ -23,5 +23,62 @@ namespace Biblioteca.Negocio
             prestamoMapper = new PrestamoMapper();
         }
 
+        public List<Cliente> GetClientes()
+        {
+            List<Cliente> clientes = this.clienteMapper.TraerTodos();
+            if(clientes.Count == 0)
+            {
+                throw new SinClientesException();
+            }
+            else
+            {
+                return clientes;
+            }
+        }
+
+        public List<Libro> GetLibros()
+        {
+            List<Libro> libros = this.libroMapper.TraerTodos();
+            if (libros.Count == 0)
+            {
+                throw new SinLibrosException();
+            }
+            else
+            {
+                return libros;
+            }
+        }
+
+        public List<Ejemplar> GetEjemplares()
+        {
+            List<Ejemplar> ejemplares = this.ejemplarMapper.TraerTodos();
+            if (ejemplares.Count == 0)
+            {
+                throw new SinEjemplaresException();
+            }
+            else
+            {
+                return ejemplares;
+            }
+        }
+
+        public List<Prestamo> GetPrestamos()
+        {
+            List<Prestamo> prestamos = this.prestamoMapper.TraerTodos();
+            if (prestamos.Count == 0)
+            {
+                throw new SinPrestamosException();
+            }
+            else
+            {
+                return prestamos;
+            }
+        }
+
+        public void IngresarCliente(string nombre, string apellido, string direccion, long telefono, string mail, bool activo)
+        {
+
+        }
+
     }
 }
