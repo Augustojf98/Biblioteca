@@ -75,11 +75,6 @@ namespace Biblioteca.Negocio
             }
         }
 
-        public void IngresarCliente(string nombre, string apellido, string direccion, long telefono, string mail, bool activo)
-        {
-
-        }
-
         public Cliente BuscarClienteById(int id)
         {
             List<Cliente> clientes = GetClientes();
@@ -143,6 +138,65 @@ namespace Biblioteca.Negocio
             else
             {
                 return ejemplares;
+            }
+        }
+
+        public void IngresarCliente(string nombre, string apellido, string direccion, long telefono, string mail, bool activo)
+        {
+            int idNuevoCliente = this.UltimoCodCliente() + 1;
+            Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToShortDateString(), activo, idNuevoCliente, nombre, apellido, direccion, telefono, mail);
+            clienteMapper.Insert(cliente);
+        }
+
+        private int UltimoCodCliente()
+        {
+            List <Cliente> clientes = this.GetClientes();
+            if(clientes.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return clientes.LastOrDefault().IdCliente;
+            }
+        }
+
+        private int UltimoCodLibro()
+        {
+            List<Libro> libros = this.GetLibros();
+            if (libros.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return libros.LastOrDefault().Id;
+            }
+        }
+
+        private int UltimoCodEjemplar()
+        {
+            List<Ejemplar> ejemplares = this.GetEjemplares();
+            if (ejemplares.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return ejemplares.LastOrDefault().Id;
+            }
+        }
+
+        private int UltimoCodPrestamo()
+        {
+            List<Prestamo> prestamos = this.GetPrestamos();
+            if (prestamos.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return prestamos.LastOrDefault().Id;
             }
         }
 
