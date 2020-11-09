@@ -173,6 +173,90 @@ namespace Biblioteca.Negocio
 
         }
 
+        public int IngresarLibro(string titulo, string autor, int edicion, string editorial, int paginas, string tema)
+        {
+            List<Libro> libros = this.GetLibros();
+            int idNuevoLibro = this.UltimoCodLibro() + 1;
+
+            Libro libro = new Libro(idNuevoLibro, titulo, autor, edicion, editorial, paginas, tema);
+
+            foreach (Libro l in libros)
+            {
+                if (l.ToString() == libro.ToString())
+                {
+                    throw new Exception(string.Format("Ya existe el libro"));
+                }
+            }
+
+            TransactionResult result = libroMapper.Insert(libro);
+
+            if (result.IsOk)
+            {
+                return result.Id;
+            }
+            else
+            {
+                throw new Exception(string.Format("Ocurrió un error en el servidor. Detalle: \"{0}\"", result.Error));
+            }
+
+        }
+
+        public int IngresarPrestamo(int idCliente, int idEjemplar, int plazo, DateTime fechaAlta, DateTime fechaBaja, string tema)
+        {
+            List<Prestamo> prestamos = this.GetPrestamos();
+            int idNuevoPrestamo = this.UltimoCodPrestamo() + 1;
+
+            Prestamo prestamo = new Prestamo(idNuevoPrestamo, idCliente, idEjemplar, plazo, fechaAlta.ToShortDateString(), fechaBaja.ToShortDateString(), string.Empty);
+
+            foreach (Prestamo p in prestamos)
+            {
+                if (p.ToString() == prestamo.ToString())
+                {
+                    throw new Exception(string.Format("Ya existe el prestamo"));
+                }
+            }
+
+            TransactionResult result = prestamoMapper.Insert(prestamo);
+
+            if (result.IsOk)
+            {
+                return result.Id;
+            }
+            else
+            {
+                throw new Exception(string.Format("Ocurrió un error en el servidor. Detalle: \"{0}\"", result.Error));
+            }
+
+        }
+
+        public int IngresarEjemplar(int idLibro, string observaciones, double precio, DateTime fechaAlta)
+        {
+            List<Ejemplar> ejemplares = this.GetEjemplares();
+            int idNuevoEjemplar = this.UltimoCodEjemplar() + 1;
+
+            Ejemplar ejemplar = new Ejemplar(idNuevoEjemplar, idLibro, observaciones, precio, fechaAlta.ToShortDateString());
+
+            foreach (Ejemplar e in ejemplares)
+            {
+                if (e.ToString() == ejemplar.ToString())
+                {
+                    throw new Exception(string.Format("Ya existe el ejemplar."));
+                }
+            }
+
+            TransactionResult result = ejemplarMapper.Insert(ejemplar);
+
+            if (result.IsOk)
+            {
+                return result.Id;
+            }
+            else
+            {
+                throw new Exception(string.Format("Ocurrió un error en el servidor. Detalle: \"{0}\"", result.Error));
+            }
+
+        }
+
         private int UltimoCodCliente()
         {
             List <Cliente> clientes = this.GetClientes();

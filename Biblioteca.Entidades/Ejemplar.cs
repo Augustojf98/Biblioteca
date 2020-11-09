@@ -85,6 +85,7 @@ namespace Biblioteca.Entidades
                 this._fechaAlta = value; 
             }
         }
+
         public Ejemplar(int id, int idLibro,string observaciones, double precio, string fechaAlta)
         {
             this._id = id;
@@ -92,6 +93,11 @@ namespace Biblioteca.Entidades
             this._observaciones = observaciones;
             this._precio = precio;
             this._fechaAlta = Convert.ToDateTime(fechaAlta); 
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} - {1} - {2} - {3}", _idLibro, _observaciones, _precio, _fechaAlta);
         }
     }
 

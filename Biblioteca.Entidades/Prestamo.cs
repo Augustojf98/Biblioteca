@@ -133,16 +133,19 @@ namespace Biblioteca.Entidades
         {
             this._id = id;
             this._idCliente = idCliente;
+            this._idEjemplar = idEjemplar;
             this._plazo = plazo;
             this._fechaAlta = Convert.ToDateTime(fechaAlta);
             this._fechaBaja = Convert.ToDateTime(fechaBaja);
             this._fechaBajaReal = Convert.ToDateTime(fechaBajaReal);
-
         }
-        
-       
 
-        
+        public override string ToString()
+        {
+            return string.Format("{0} - {1} - {2} - {3} - {4}", _idCliente, _plazo, _idEjemplar, _fechaAlta, _fechaBaja);
+        }
+
+
 
 
 

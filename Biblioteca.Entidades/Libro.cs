@@ -125,6 +125,10 @@ namespace Biblioteca.Entidades
             this._tema = tema; 
         }
 
-        
+        public override string ToString()
+        {
+            return string.Format("{0} - {1} - {2} - {3} - {4} - {5}", _titulo.ToUpper(), _autor.ToUpper(), _edicion, _editorial.ToUpper(), _paginas, _tema.ToUpper());
+        }
+
     }
 }
