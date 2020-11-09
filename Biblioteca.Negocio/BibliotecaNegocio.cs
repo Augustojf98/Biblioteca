@@ -80,5 +80,57 @@ namespace Biblioteca.Negocio
 
         }
 
+        public Cliente BuscarClienteById(int id)
+        {
+            List<Cliente> clientes = GetClientes();
+            foreach(Cliente c in clientes)
+            {
+                if(c.IdCliente == id)
+                {
+                    return c;
+                }
+            }
+            return null;
+        }
+
+        public Libro BuscarLibroById(int id)
+        {
+            List<Libro> libros = GetLibros();
+            foreach (Libro l in libros)
+            {
+                if (l.Id == id)
+                {
+                    return l;
+                }
+            }
+            return null;
+        }
+
+        public Prestamo BuscarPrestamoById(int id)
+        {
+            List<Prestamo> prestamos = GetPrestamos();
+            foreach (Prestamo p in prestamos)
+            {
+                if (p.Id == id)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+        public Ejemplar BuscarEjemplarById(int id)
+        {
+            List<Ejemplar> ejemplares = GetEjemplares();
+            foreach (Ejemplar e in ejemplares)
+            {
+                if (e.Id == id)
+                {
+                    return e;
+                }
+            }
+            return null;
+        }
+
     }
 }
