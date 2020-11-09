@@ -132,5 +132,19 @@ namespace Biblioteca.Negocio
             return null;
         }
 
+        public List<Ejemplar> BuscarEjemplaresByIdLibro(int id)
+        {
+
+            List<Ejemplar> ejemplares = ejemplarMapper.TraerPorLibro(id);
+            if(ejemplares.Count == 0)
+            {
+                throw new SinEjemplaresException(id);
+            }
+            else
+            {
+                return ejemplares;
+            }
+        }
+
     }
 }

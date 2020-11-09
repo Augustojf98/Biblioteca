@@ -28,6 +28,10 @@ namespace Biblioteca.Entidades
         {
 
         }
+        public SinEjemplaresException(int idLibro) : base(string.Format("No hay ejemplares cargados para el libro de código \"{0}\".", idLibro))
+        {
+
+        }
     }
 
     public class SinClientesException : Exception
