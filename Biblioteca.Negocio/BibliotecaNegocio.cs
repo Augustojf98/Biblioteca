@@ -180,13 +180,13 @@ namespace Biblioteca.Negocio
 
             Libro libro = new Libro(idNuevoLibro, titulo, autor, edicion, editorial, paginas, tema);
 
-            //foreach (Libro l in libros)
-            //{
-            //    if (l.ToString() == libro.ToString())
-            //    {
-            //        throw new Exception(string.Format("Ya existe el libro"));
-            //    }
-            //}
+            foreach (Libro l in libros)
+            {
+                if (l.ToString() == libro.ToString())
+                {
+                    throw new Exception(string.Format("Ya existe el libro"));
+                }
+            }
 
             TransactionResult result = libroMapper.Insert(libro);
 
