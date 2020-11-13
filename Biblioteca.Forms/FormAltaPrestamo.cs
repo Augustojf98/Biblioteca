@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Biblioteca.Forms
 {
-    public partial class Form1 : Form
+    public partial class FormAltaPrestamo : Form
     {
-        public Form1()
+        public FormAltaPrestamo()
         {
             InitializeComponent();
         }

@@ -49,14 +49,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormAltaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormAltaCliente.Designer.cs">
+      <DependentUpon>FormAltaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAltaEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAltaEjemplar.Designer.cs">
+      <DependentUpon>FormAltaEjemplar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAltaLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAltaLibro.Designer.cs">
+      <DependentUpon>FormAltaLibro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAltaPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAltaPrestamo.Designer.cs">
+      <DependentUpon>FormAltaPrestamo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormException.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormException.Designer.cs">
+      <DependentUpon>FormException.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInicio.Designer.cs">
+      <DependentUpon>FormInicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormInicio.resx">
+      <DependentUpon>FormInicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

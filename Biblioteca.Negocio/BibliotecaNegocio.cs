@@ -154,10 +154,10 @@ namespace Biblioteca.Negocio
                 {
                     throw new Exception(string.Format("Ya existe un cliente llamado \"{0} {1}\"", nombre, apellido));
                 }
-                //if (c.Telefono == cliente.Telefono || c.Mail.ToUpper() == cliente.Mail.ToUpper())
-                //{
-                //    throw new Exception(string.Format("El email \"{0}\" o el teléfono \"{1}\" se encuentran ya registrados.", mail, telefono));
-                //}
+                if (c.Telefono == cliente.Telefono || c.Mail.ToUpper() == cliente.Mail.ToUpper())
+                {
+                    throw new Exception(string.Format("El email \"{0}\" o el teléfono \"{1}\" se encuentran ya registrados.", mail, telefono));
+                }
             }
 
             TransactionResult result = clienteMapper.Insert(cliente);
