@@ -17,17 +17,17 @@ namespace Biblioteca.Consola
             try
             {
                 //biblioteca.IngresarCliente("pedro", "perez", "asd 123", 12345678, "asdasd@asd", true);
-                biblioteca.IngresarLibro("asd", "jorge", 2,"rouler", 212, "qweq");
+                //biblioteca.IngresarLibro("asd", "jorge", 2,"rouler", 212, "qweq");
 
-                List<Libro> libros = biblioteca.GetLibros();
+                List<Cliente> libros = biblioteca.GetClientes();
 
-                foreach (Libro l in libros)
+                foreach (Cliente l in libros)
                 {
                     Console.WriteLine(l.ToString());
                 }
 
             }
-            catch (SinLibrosException ex)
+            catch (SinClientesException ex)
             {
                 Console.WriteLine(ex.Message);
             }

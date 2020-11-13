@@ -141,7 +141,7 @@ namespace Biblioteca.Negocio
             }
         }
 
-        public int IngresarCliente(string nombre, string apellido, string direccion, long telefono, string mail, bool activo)
+        public int IngresarCliente(string nombre, string apellido, string direccion, string telefono, string mail, bool activo)
         {
             List<Cliente> clientes = this.GetClientes();
             int idNuevoCliente = this.UltimoCodCliente() + 1;

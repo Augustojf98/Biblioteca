@@ -56,7 +56,7 @@ namespace Biblioteca.Datos
             n.Add("Direccion", cliente.Direccion);
             n.Add("Usuario", ConfigurationManager.AppSettings["Legajo"]);
             //n.Add("Mail", cliente.Mail); // STRING
-            //n.Add("Telefono", cliente.Telefono.ToString()); // INT
+            n.Add("Telefono", cliente.Telefono.ToString()); // INT
             //n.Add("FechaAlta", cliente.FechaAlta.ToShortDateString()); // DateTime
             //n.Add("Activo", cliente.Activo.ToString()); // bool
             return n;

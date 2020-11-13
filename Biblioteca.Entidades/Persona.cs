@@ -14,8 +14,8 @@ namespace Biblioteca.Entidades
         protected string _nombre;
         protected string _apellido;
         protected string _direccion;
-        //protected long _telefono;
-        //protected string _mail;
+        protected string _telefono;
+        protected string _mail;
 
         public int Id
         {
@@ -68,31 +68,31 @@ namespace Biblioteca.Entidades
             }
         }
 
-        //[DataMember]
-        //public long Telefono
-        //{
-        //    get
-        //    {
-        //        return this._telefono;
-        //    }
-        //    set
-        //    {
-        //        this._telefono = value;
-        //    }
-        //}
+        [DataMember]
+        public string Telefono
+        {
+            get
+            {
+                return this._telefono;
+            }
+            set
+            {
+                this._telefono = value;
+            }
+        }
 
-        //[DataMember]
-        //public string Mail
-        //{
-        //    get
-        //    {
-        //        return this._mail;
-        //    }
-        //    set
-        //    {
-        //        this._mail = value;
-        //    }
-        //}
+        [DataMember]
+        public string Mail
+        {
+            get
+            {
+                return this._mail;
+            }
+            set
+            {
+                this._mail = value;
+            }
+        }
 
 
 
