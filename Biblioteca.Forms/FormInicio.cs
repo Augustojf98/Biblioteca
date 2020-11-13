@@ -72,20 +72,26 @@ namespace Biblioteca.Forms
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //var clientesEliminados = this.checkedListBox1.CheckedItems.OfType<Cliente>();
-
-            //List<Cliente> clientes = clientesEliminados.ToList();
+            //List<Cliente> clientes = this.checkedListBox1.CheckedItems.OfType<Cliente>().ToList();
 
             //foreach (Cliente cliente in clientes)
             //{
-            //    this.checkedListBox1.Items.Remove(cliente);
             //    biblioteca.EliminarCliente(cliente);
+            //    this.checkedListBox1.Items.Remove(cliente);
             //}
 
             //this.CargarClientes();
             FormException formException = new FormException("Función en desarrollo", "Próximamente esta función será habilitada");
             formException.Owner = this;
             formException.Show();
+            this.Enabled = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormAltaLibro formAltaLibro = new FormAltaLibro();
+            formAltaLibro.Owner = this;
+            formAltaLibro.Show();
             this.Enabled = false;
         }
     }

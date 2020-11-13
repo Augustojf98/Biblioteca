@@ -93,6 +93,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Agregar libro";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -472,7 +473,7 @@
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(182, 23);
             this.button9.TabIndex = 9;
-            this.button9.Text = "Eliminar selección";
+            this.button9.Text = "Eliminar";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
