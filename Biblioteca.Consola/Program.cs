@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Biblioteca.Negocio;
+using Biblioteca.Entidades;
 
 namespace Biblioteca.Consola
 {
@@ -10,6 +12,30 @@ namespace Biblioteca.Consola
     {
         static void Main(string[] args)
         {
+            BibliotecaNegocio biblioteca = new BibliotecaNegocio();
+
+            try
+            {
+                //biblioteca.IngresarCliente("pedro", "perez", "asd 123", 12345678, "asdasd@asd", true);
+                biblioteca.IngresarLibro("asd", "jorge", 2,"rouler", 212, "qweq");
+
+                List<Libro> libros = biblioteca.GetLibros();
+
+                foreach (Libro l in libros)
+                {
+                    Console.WriteLine(l.ToString());
+                }
+
+            }
+            catch (SinLibrosException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.ReadKey();
         }
     }
 }

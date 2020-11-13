@@ -60,11 +60,16 @@ namespace Biblioteca.Entidades
             this._nombre = nombre;
             this._apellido = apellido;
             this._direccion = direccion;
-            this._telefono = telefono;
-            this._mail = mail;
+            //this._telefono = telefono;
+            //this._mail = mail;
             this._idCliente = idcliente;
             this._fechaAlta = Convert.ToDateTime(fechaAlta);
             this._activo = activo; 
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Cliente {0}, {1}", this._apellido, this._nombre);
         }
     }
  

@@ -19,7 +19,6 @@ namespace Biblioteca.Entidades
         private string _tema;
        
        [DataMember]
-
        public int Id
         {
             get
@@ -33,7 +32,6 @@ namespace Biblioteca.Entidades
         }
 
         [DataMember]
-
         public string Titulo
         {
             get 
@@ -47,7 +45,6 @@ namespace Biblioteca.Entidades
         }
 
         [DataMember]
-
         public string Autor
         {
             get
@@ -61,7 +58,6 @@ namespace Biblioteca.Entidades
         }
 
         [DataMember]
-
         public int Edicion
         {
             get
@@ -86,8 +82,8 @@ namespace Biblioteca.Entidades
                 this._editorial = value; 
             }
         }
-        [DataMember]
 
+        [DataMember]
         public int Paginas
         {
             get
@@ -101,7 +97,6 @@ namespace Biblioteca.Entidades
         }
 
         [DataMember]
-
         public string Tema
         {
             get
@@ -127,7 +122,7 @@ namespace Biblioteca.Entidades
 
         public override string ToString()
         {
-            return string.Format("{0} - {1} - {2} - {3} - {4} - {5}", _titulo.ToUpper(), _autor.ToUpper(), _edicion, _editorial.ToUpper(), _paginas, _tema.ToUpper());
+            return string.Format("{0} - {1} - {2} - {3} - {4} - {5}", _titulo.ToUpper(), _autor.ToUpper());
         }
 
     }
