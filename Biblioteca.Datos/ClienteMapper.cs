@@ -50,15 +50,15 @@ namespace Biblioteca.Datos
         private NameValueCollection ReverseMap(Cliente cliente)
         {
             NameValueCollection n = new NameValueCollection();
-            //n.Add("Id", cliente.IdCliente.ToString());
+            n.Add("Id", cliente.IdCliente.ToString());
             n.Add("Nombre", cliente.Nombre);
             n.Add("Apellido", cliente.Apellido);
             n.Add("Direccion", cliente.Direccion);
             n.Add("Usuario", ConfigurationManager.AppSettings["Legajo"]);
-            //n.Add("Mail", cliente.Mail); // STRING
+            n.Add("Mail", cliente.Mail); // STRING
             n.Add("Telefono", cliente.Telefono.ToString()); // INT
-            //n.Add("FechaAlta", cliente.FechaAlta.ToShortDateString()); // DateTime
-            //n.Add("Activo", cliente.Activo.ToString()); // bool
+            n.Add("FechaAlta", cliente.FechaAlta.ToShortDateString()); // DateTime
+            n.Add("Activo", cliente.Activo.ToString()); // bool
             return n;
         }
 
