@@ -68,6 +68,7 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.tabPage5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.Clientes.SuspendLayout();
@@ -201,6 +202,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage1.Controls.Add(this.button9);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
@@ -464,6 +466,16 @@
             this.checkedListBox4.Size = new System.Drawing.Size(755, 259);
             this.checkedListBox4.TabIndex = 0;
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(7, 50);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(182, 23);
+            this.button9.TabIndex = 9;
+            this.button9.Text = "Eliminar selección";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -530,6 +542,7 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.CheckedListBox checkedListBox4;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button9;
     }
 }
 

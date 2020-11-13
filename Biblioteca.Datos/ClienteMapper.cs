@@ -50,7 +50,8 @@ namespace Biblioteca.Datos
         private NameValueCollection ReverseMap(Cliente cliente)
         {
             NameValueCollection n = new NameValueCollection();
-            n.Add("Id", cliente.IdCliente.ToString());
+            n.Add("Id", cliente.Id.ToString());
+            n.Add("DNI", cliente.DNI.ToString());
             n.Add("Nombre", cliente.Nombre);
             n.Add("Apellido", cliente.Apellido);
             n.Add("Direccion", cliente.Direccion);

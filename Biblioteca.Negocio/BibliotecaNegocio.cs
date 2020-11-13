@@ -141,6 +141,20 @@ namespace Biblioteca.Negocio
             }
         }
 
+        public int EliminarCliente(Cliente cliente)
+        {
+            TransactionResult result = clienteMapper.Delete(cliente);
+
+            if (result.IsOk)
+            {
+                return result.Id;
+            }
+            else
+            {
+                throw new Exception(string.Format("Ocurrió un error en el servidor. Detalle: \"{0}\"", result.Error));
+            }
+        }
+
         public int IngresarCliente(string nombre, string apellido, string direccion, string telefono, string mail, bool activo)
         {
             List<Cliente> clientes = this.GetClientes();

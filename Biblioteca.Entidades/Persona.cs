@@ -12,6 +12,7 @@ namespace Biblioteca.Entidades
     {
         protected int _id;
         protected string _nombre;
+        protected int? _dni;
         protected string _apellido;
         protected string _direccion;
         protected string _telefono;
@@ -26,6 +27,19 @@ namespace Biblioteca.Entidades
             set
             {
                 this._id = value;
+            }
+        }
+
+        [DataMember]
+        public int? DNI
+        {
+            get
+            {
+                return this._dni;
+            }
+            set
+            {
+                this._dni = value;
             }
         }
 

@@ -12,9 +12,17 @@ namespace Biblioteca.Forms
 {
     public partial class FormException : Form
     {
-        public FormException()
+        public FormException(string titulo, string descripcion)
         {
             InitializeComponent();
+            this.textBox1.Text = titulo;
+            this.textBox2.Text = descripcion;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Owner.Enabled = true;
+            this.Close();
         }
     }
 }
