@@ -20,10 +20,7 @@ namespace Biblioteca.Forms
         {
             InitializeComponent();
             biblioteca = new BibliotecaNegocio();
-            this.CargarClientes();
-            this.CargarLibros();
-            this.CargarEjemplares();
-            this.CargarPrestamos();
+            this.Refrescar();
             this.comboBox1.DataSource = biblioteca.GetLibros();
 
             if(biblioteca.GetLibros().Count == 0)
@@ -31,6 +28,14 @@ namespace Biblioteca.Forms
                 this.comboBox1.Items.Add("No hay libros cargados");
                 this.comboBox1.Enabled = false;
             }
+        }
+
+        private void Refrescar()
+        {
+            this.CargarClientes();
+            this.CargarEjemplares();
+            this.CargarLibros();
+            this.CargarPrestamos();
         }
 
         private void CargarClientes()
@@ -89,10 +94,16 @@ namespace Biblioteca.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormAltaLibro formAltaLibro = new FormAltaLibro();
+            FormAltaLibro formAltaLibro = new FormAltaLibro(biblioteca);
             formAltaLibro.Owner = this;
             formAltaLibro.Show();
             this.Enabled = false;
+            this.Refrescar();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

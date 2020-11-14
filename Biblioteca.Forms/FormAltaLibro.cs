@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Biblioteca.Entidades;
+using Biblioteca.Negocio;
 
 namespace Biblioteca.Forms
 {
     public partial class FormAltaLibro : Form
     {
-        public FormAltaLibro()
+        private BibliotecaNegocio biblioteca;
+        public FormAltaLibro(BibliotecaNegocio bibliotecaNegocio)
         {
             InitializeComponent();
+            this.biblioteca = bibliotecaNegocio;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -25,8 +29,19 @@ namespace Biblioteca.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Owner.Enabled = true;
-            this.Close();
+            try
+            {
+                this.biblioteca.IngresarLibro(this.textBox1.Text, this.textBox2.Text, int.Parse(this.textBox3.Text), this.textBox4.Text, int.Parse(this.textBox5.Text), this.textBox6.Text);
+                this.Owner.Enabled = true;
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                FormException formException = new FormException("ERROR", ex.Message);
+                formException.Owner = this;
+                formException.Show();
+                this.Enabled = false;
+            }
         }
     }
 }

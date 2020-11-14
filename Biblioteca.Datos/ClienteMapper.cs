@@ -51,7 +51,6 @@ namespace Biblioteca.Datos
         {
             NameValueCollection n = new NameValueCollection();
             n.Add("Id", cliente.Id.ToString());
-            n.Add("DNI", cliente.DNI.ToString());
             n.Add("Nombre", cliente.Nombre);
             n.Add("Apellido", cliente.Apellido);
             n.Add("Direccion", cliente.Direccion);
@@ -68,18 +67,5 @@ namespace Biblioteca.Datos
             TransactionResult lst = JsonConvert.DeserializeObject<TransactionResult>(json);
             return lst;
         }
-
-
-        //private Cliente MapObj(string json)
-        //{
-        //    var lst = JsonConvert.DeserializeObject<Cliente>(json);
-        //    return lst;
-        //}
-        //public Cliente TraerPorCodigo(int codigo)
-        //{
-        //    string json2 = WebHelper.Get("/api/v1/cliente/" + codigo.ToString()); // trae un texto en formato json de una web
-        //    Cliente resultado = MapObj(json2);
-        //    return resultado;
-        //}
     }
 }
