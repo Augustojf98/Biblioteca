@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Caching;
 using System.Windows.Forms;
 using Biblioteca.Negocio;
 using Biblioteca.Entidades;
@@ -40,12 +41,33 @@ namespace Biblioteca.Forms
 
         private void CargarClientes()
         {
-            this.checkedListBox1.Items.Clear();
+
+            //this.checkedListBox1.Items.Clear();
             List<Cliente> lista = biblioteca.GetClientes();
+
+            //string value;
+            //value = Program.Cache[CLIENTES_CACHE_KEY] as string;
+            //if (value == null)
+            //{
+            //    value = biblioteca.GetClientes().ToString();
+            //}
+            //else
+            //{
+            //    Program.Cache.Insert(
+            //    CLIENTES_CACHE_KEY,
+            //    value,
+            //    null,
+            //    Cache.NoAbsoluteExpiration,
+            //    TimeSpan.FromSeconds(60));
+            //}
+
+            //lista = value;
+
             foreach (Cliente cliente in lista)
             {
                 this.checkedListBox1.Items.Add(cliente);
             }
+
         }
 
         private void CargarLibros()
@@ -77,19 +99,19 @@ namespace Biblioteca.Forms
 
         private void button9_Click(object sender, EventArgs e)
         {
-            //List<Cliente> clientes = this.checkedListBox1.CheckedItems.OfType<Cliente>().ToList();
+            List<Cliente> clientes = this.checkedListBox1.CheckedItems.OfType<Cliente>().ToList();
 
-            //foreach (Cliente cliente in clientes)
-            //{
-            //    biblioteca.EliminarCliente(cliente);
-            //    this.checkedListBox1.Items.Remove(cliente);
-            //}
+            foreach (Cliente cliente in clientes)
+            {
+                biblioteca.EliminarCliente(cliente);
+                this.checkedListBox1.Items.Remove(cliente);
+            }
 
-            //this.CargarClientes();
-            FormException formException = new FormException("Función en desarrollo", "Próximamente esta función será habilitada");
-            formException.Owner = this;
-            formException.Show();
-            this.Enabled = false;
+            this.CargarClientes();
+            //FormException formException = new FormException("Función en desarrollo", "Próximamente esta función será habilitada");
+            //formException.Owner = this;
+            //formException.Show();
+            //this.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -104,6 +126,17 @@ namespace Biblioteca.Forms
         private void button10_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Refrescar();
+            //Program.Cache.Insert(
+            //CLIENTES_CACHE_KEY,
+            //lista,
+            //null,
+            //Cache.NoAbsoluteExpiration,
+            //TimeSpan.FromSeconds(60));
         }
     }
 }

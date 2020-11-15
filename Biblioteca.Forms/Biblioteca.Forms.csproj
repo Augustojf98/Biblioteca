@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,8 +88,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAltaCliente.resx">
+      <DependentUpon>FormAltaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAltaEjemplar.resx">
+      <DependentUpon>FormAltaEjemplar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAltaLibro.resx">
       <DependentUpon>FormAltaLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAltaPrestamo.resx">
+      <DependentUpon>FormAltaPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormException.resx">
       <DependentUpon>FormException.cs</DependentUpon>

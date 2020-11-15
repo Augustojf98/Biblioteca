@@ -61,7 +61,7 @@ namespace Biblioteca.Datos
 
             try
             {
-                var response = client.UploadValues(uri, "PUT", parametros);
+                var response = client.UploadValues(uri, "Put", parametros);
 
                 var responseString = Encoding.Default.GetString(response);
 
@@ -81,7 +81,7 @@ namespace Biblioteca.Datos
 
             try
             {
-                var response = client.UploadValues(uri, "DELETE", parametros);
+                var response = client.UploadValues(uri, "Delete", parametros);
 
                 var responseString = Encoding.Default.GetString(response);
 

@@ -38,6 +38,8 @@ namespace Biblioteca.Datos
 
             TransactionResult resultadoTransaccion = MapResultado(result);
 
+            List<Cliente> clientes = TraerTodos();
+
             return resultadoTransaccion;
         }
 

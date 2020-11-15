@@ -2,6 +2,12 @@
 {
     partial class FormInicio
     {
+
+        private const string CLIENTES_CACHE_KEY = "CLIENTESCACHEKEY";
+        private const string LIBROS_CACHE_KEY = "LIBROSCACHEKEY";
+        private const string EJEMPLARES_CACHE_KEY = "EJEMPLARESCACHEKEY";
+        private const string PRESTAMOS_CACHE_KEY = "PRESTAMOSCACHEKEY";
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -33,8 +39,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -42,6 +49,7 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,41 +58,39 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.Clientes = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button8 = new System.Windows.Forms.Button();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
             this.button10 = new System.Windows.Forms.Button();
             this.tabPage5.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.Clientes.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +103,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Agregar cliente";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -135,18 +142,24 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(767, 397);
+            this.tabPage5.Size = new System.Drawing.Size(767, 412);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Libros";
             // 
-            // button6
+            // panel2
             // 
-            this.button6.Location = new System.Drawing.Point(567, 27);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(183, 24);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Buscar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.textBox5);
+            this.panel2.Controls.Add(this.textBox6);
+            this.panel2.Location = new System.Drawing.Point(3, 6);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(758, 61);
+            this.panel2.TabIndex = 9;
             // 
             // label4
             // 
@@ -156,6 +169,15 @@
             this.label4.Size = new System.Drawing.Size(21, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "ID";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(567, 27);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(183, 24);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "Buscar";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -221,6 +243,23 @@
             this.tabPage1.Size = new System.Drawing.Size(767, 412);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Clientes";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.checkBox1);
+            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Location = new System.Drawing.Point(3, 6);
+            this.panel1.MaximumSize = new System.Drawing.Size(1480, 200);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(758, 61);
+            this.panel1.TabIndex = 10;
             // 
             // button5
             // 
@@ -302,6 +341,17 @@
             this.textBox1.Size = new System.Drawing.Size(183, 24);
             this.textBox1.TabIndex = 1;
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(6, 81);
+            this.button9.MaximumSize = new System.Drawing.Size(1480, 200);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(182, 26);
+            this.button9.TabIndex = 9;
+            this.button9.Text = "Eliminar";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // checkedListBox1
             // 
             this.checkedListBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -342,44 +392,24 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(767, 397);
+            this.tabPage2.Size = new System.Drawing.Size(767, 412);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "Ejemplares";
             // 
-            // comboBox1
+            // panel3
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(192, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(183, 24);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(567, 27);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(183, 24);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "Buscar";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(380, 7);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 17);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Precio";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(192, 7);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 17);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Libro";
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.textBox9);
+            this.panel3.Controls.Add(this.textBox7);
+            this.panel3.Controls.Add(this.button7);
+            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.label7);
+            this.panel3.Location = new System.Drawing.Point(3, 6);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(758, 61);
+            this.panel3.TabIndex = 10;
             // 
             // label9
             // 
@@ -390,13 +420,13 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "ID";
             // 
-            // textBox7
+            // comboBox1
             // 
-            this.textBox7.Location = new System.Drawing.Point(380, 27);
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(183, 24);
-            this.textBox7.TabIndex = 3;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(192, 27);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(183, 24);
+            this.comboBox1.TabIndex = 9;
             // 
             // textBox9
             // 
@@ -405,6 +435,41 @@
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(183, 24);
             this.textBox9.TabIndex = 1;
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(380, 27);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(183, 24);
+            this.textBox7.TabIndex = 3;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(567, 27);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(183, 24);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "Buscar";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(192, 7);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 17);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Libro";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(380, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 17);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Precio";
             // 
             // checkedListBox3
             // 
@@ -424,121 +489,9 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(767, 397);
+            this.tabPage3.Size = new System.Drawing.Size(767, 412);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "Prestamos";
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(638, 25);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(115, 26);
-            this.button8.TabIndex = 8;
-            this.button8.Text = "Buscar";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Checked = true;
-            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox4.Location = new System.Drawing.Point(567, 27);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(68, 21);
-            this.checkBox4.TabIndex = 4;
-            this.checkBox4.Text = "Activo";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(379, 27);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(183, 24);
-            this.textBox10.TabIndex = 3;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(191, 27);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(183, 24);
-            this.textBox11.TabIndex = 2;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(2, 27);
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(183, 24);
-            this.textBox12.TabIndex = 1;
-            // 
-            // checkedListBox4
-            // 
-            this.checkedListBox4.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.checkedListBox4.FormattingEnabled = true;
-            this.checkedListBox4.Location = new System.Drawing.Point(6, 113);
-            this.checkedListBox4.Name = "checkedListBox4";
-            this.checkedListBox4.Size = new System.Drawing.Size(755, 276);
-            this.checkedListBox4.TabIndex = 0;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(6, 81);
-            this.button9.MaximumSize = new System.Drawing.Size(1480, 200);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(182, 26);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "Eliminar";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.checkBox1);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 6);
-            this.panel1.MaximumSize = new System.Drawing.Size(1480, 200);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(758, 61);
-            this.panel1.TabIndex = 10;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.button6);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox6);
-            this.panel2.Location = new System.Drawing.Point(3, 6);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(758, 61);
-            this.panel2.TabIndex = 9;
-            // 
-            // panel3
-            // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.textBox9);
-            this.panel3.Controls.Add(this.textBox7);
-            this.panel3.Controls.Add(this.button7);
-            this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Location = new System.Drawing.Point(3, 6);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(758, 61);
-            this.panel3.TabIndex = 10;
             // 
             // panel4
             // 
@@ -556,14 +509,14 @@
             this.panel4.Size = new System.Drawing.Size(758, 61);
             this.panel4.TabIndex = 9;
             // 
-            // label10
+            // label12
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(2, 7);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(21, 17);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "ID";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(379, 7);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(63, 17);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Ejemplar";
             // 
             // label11
             // 
@@ -574,14 +527,68 @@
             this.label11.TabIndex = 10;
             this.label11.Text = "Cliente";
             // 
-            // label12
+            // label10
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(379, 7);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(63, 17);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Ejemplar";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(2, 7);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(21, 17);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "ID";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(379, 27);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(183, 24);
+            this.textBox10.TabIndex = 3;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(2, 27);
+            this.textBox12.Multiline = true;
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(183, 24);
+            this.textBox12.TabIndex = 1;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(638, 25);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(115, 26);
+            this.button8.TabIndex = 8;
+            this.button8.Text = "Buscar";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(191, 27);
+            this.textBox11.Multiline = true;
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(183, 24);
+            this.textBox11.TabIndex = 2;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Checked = true;
+            this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox4.Location = new System.Drawing.Point(567, 27);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(68, 21);
+            this.checkBox4.TabIndex = 4;
+            this.checkBox4.Text = "Activo";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkedListBox4
+            // 
+            this.checkedListBox4.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.checkedListBox4.FormattingEnabled = true;
+            this.checkedListBox4.Location = new System.Drawing.Point(6, 113);
+            this.checkedListBox4.Name = "checkedListBox4";
+            this.checkedListBox4.Size = new System.Drawing.Size(755, 276);
+            this.checkedListBox4.TabIndex = 0;
             // 
             // button10
             // 
@@ -608,16 +615,16 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.RightToLeftLayout = true;
             this.tabPage5.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.Clientes.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.Clientes.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
