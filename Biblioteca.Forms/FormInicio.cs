@@ -130,13 +130,29 @@ namespace Biblioteca.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //this.Refrescar();
-            //Program.Cache.Insert(
-            //CLIENTES_CACHE_KEY,
-            //lista,
-            //null,
-            //Cache.NoAbsoluteExpiration,
-            //TimeSpan.FromSeconds(60));
+            FormAltaCliente formAltaCliente = new FormAltaCliente(biblioteca);
+            formAltaCliente.Owner = this;
+            formAltaCliente.Show();
+            this.Enabled = false;
+            this.Refrescar();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormAltaEjemplar formAltaEjemplar = new FormAltaEjemplar(biblioteca);
+            formAltaEjemplar.Owner = this;
+            formAltaEjemplar.Show();
+            this.Enabled = false;
+            this.Refrescar();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FormAltaPrestamo formAltaPrestamo = new FormAltaPrestamo(biblioteca);
+            formAltaPrestamo.Owner = this;
+            formAltaPrestamo.Show();
+            this.Enabled = false;
+            this.Refrescar();
         }
     }
 }

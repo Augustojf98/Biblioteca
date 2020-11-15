@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Biblioteca.Entidades;
+using Biblioteca.Negocio;
 
 namespace Biblioteca.Forms
 {
     public partial class FormAltaEjemplar : Form
     {
-        public FormAltaEjemplar()
+        private BibliotecaNegocio biblioteca;
+
+        public FormAltaEjemplar(BibliotecaNegocio bibliotecaNegocio)
         {
             InitializeComponent();
+            this.biblioteca = bibliotecaNegocio;
         }
     }
 }
