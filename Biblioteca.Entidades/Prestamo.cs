@@ -13,7 +13,9 @@ namespace Biblioteca.Entidades
     {
         private int _id;
         private int _idCliente;
+        private string _nombreCompletoCliente;
         private int _idEjemplar;
+        private string _nombreEjemplar;
         private int _plazo; 
         private DateTime _fechaAlta;
         private DateTime _fechaBaja;
@@ -128,7 +130,7 @@ namespace Biblioteca.Entidades
                 this._fechaBajaReal = value;
             }
         }
-        //que onda el plazo? deberia ser un calculo no? 
+        
         public Prestamo(int id, int idCliente, int idEjemplar, int plazo, string fechaAlta, string fechaBaja, string fechaBajaReal)
         {
             this._id = id;
@@ -140,9 +142,33 @@ namespace Biblioteca.Entidades
             this._fechaBajaReal = Convert.ToDateTime(fechaBajaReal);
         }
 
+        public string NombreCompletoCliente
+        {
+            get
+            {
+                return this._nombreCompletoCliente;
+            }
+            set
+            {
+                this._nombreCompletoCliente = value;
+            }
+        }
+
+        public string NombreEjemplar
+        {
+            get
+            {
+                return this._nombreEjemplar;
+            }
+            set
+            {
+                this._nombreEjemplar = value;
+            }
+        }
+
         public override string ToString()
         {
-            return string.Format("{0} - {1} - {2} - {3} - {4}", _idCliente, _plazo, _idEjemplar, _fechaAlta, _fechaBaja);
+            return string.Format("{0} - {1} - {2} - {3} - {4}", _idCliente, _plazo, /*_idEjemplar*/ _nombreEjemplar, _fechaAlta, _fechaBaja);
         }
 
 

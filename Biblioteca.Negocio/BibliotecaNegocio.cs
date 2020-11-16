@@ -136,6 +136,20 @@ namespace Biblioteca.Negocio
             }
             else
             {
+                Cliente cliente;
+
+                foreach (Prestamo prestamo in prestamos)
+                {
+                    //if (prestamo.IdCliente != 0)
+                    //{
+                    //    cliente = BuscarClienteById(prestamo.IdCliente);
+                    //    prestamo.NombreCompletoCliente = string.Format("{0} {1}", cliente.Nombre, cliente.Apellido);
+                    //}
+                    if(prestamo.IdEjemplar != 0)
+                    {
+                        prestamo.NombreEjemplar = BuscarEjemplarById(prestamo.IdEjemplar).NombreLibro;
+                    }
+                }
                 this._prestamos = prestamos;
                 return prestamos;
             }
@@ -146,7 +160,7 @@ namespace Biblioteca.Negocio
             //List<Cliente> clientes = GetClientes();
             foreach(Cliente c in this._clientes)
             {
-                if(c.IdCliente == id)
+                if(c.Id == id)
                 {
                     return c;
                 }

@@ -13,6 +13,8 @@ namespace Biblioteca.Entidades
         private int _idCliente;
         private DateTime _fechaAlta;
         private bool _activo; 
+
+        public Cliente() { }
        
 
         [DataMember]
