@@ -83,6 +83,10 @@
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.tabPage5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -138,6 +142,7 @@
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage5.Controls.Add(this.button12);
             this.tabPage5.Controls.Add(this.button2);
             this.tabPage5.Controls.Add(this.panel2);
             this.tabPage5.Controls.Add(this.checkedListBox2);
@@ -235,6 +240,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.button9);
             this.tabPage1.Controls.Add(this.button1);
@@ -388,6 +394,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage2.Controls.Add(this.button13);
             this.tabPage2.Controls.Add(this.panel3);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.checkedListBox3);
@@ -485,6 +492,7 @@
             // tabPage3
             // 
             this.tabPage3.BackColor = System.Drawing.Color.DarkGray;
+            this.tabPage3.Controls.Add(this.button14);
             this.tabPage3.Controls.Add(this.panel4);
             this.tabPage3.Controls.Add(this.button4);
             this.tabPage3.Controls.Add(this.checkedListBox4);
@@ -603,6 +611,46 @@
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(388, 81);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(183, 26);
+            this.button11.TabIndex = 11;
+            this.button11.Text = "Exportar lista";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(388, 81);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(183, 26);
+            this.button12.TabIndex = 10;
+            this.button12.Text = "Exportar lista";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(388, 81);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(183, 26);
+            this.button13.TabIndex = 11;
+            this.button13.Text = "Exportar lista";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(388, 81);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(183, 26);
+            this.button14.TabIndex = 10;
+            this.button14.Text = "Exportar lista";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
             // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -683,6 +731,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button14;
     }
 }
 

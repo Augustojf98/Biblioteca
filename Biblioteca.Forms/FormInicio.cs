@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace Biblioteca.Forms
     public partial class FormInicio : Form
     {
         private BibliotecaNegocio biblioteca;
+        string docPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         public FormInicio()
         {
@@ -159,7 +161,6 @@ namespace Biblioteca.Forms
             formAltaCliente.Show();
             this.Enabled = false;
             formAltaCliente.FormClosed += FormAltaCliente_FormClosed;
-            //this.Refrescar();
         }
 
         private void FormAltaCliente_FormClosed(object sender, FormClosedEventArgs e)
@@ -174,7 +175,6 @@ namespace Biblioteca.Forms
             formAltaEjemplar.Show();
             this.Enabled = false;
             formAltaEjemplar.FormClosed += FormAltaEjemplar_FormClosed;
-            //this.Refrescar();
         }
 
         private void FormAltaEjemplar_FormClosed(object sender, FormClosedEventArgs e)
@@ -189,12 +189,78 @@ namespace Biblioteca.Forms
             formAltaPrestamo.Show();
             this.Enabled = false;
             formAltaPrestamo.FormClosed += FormAltaPrestamo_FormClosed;
-            //this.Refrescar();
         }
 
         private void FormAltaPrestamo_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.CargarArrays();
+        }
+
+        private void ExportFile(string tipoExport, List<Cliente> clientes, List<Libro> libros, List<Ejemplar> ejemplares, List<Prestamo> prestamos)
+        {
+            List<string> lista = new List<string>();
+
+            if(tipoExport == "Clientes")
+            {
+                foreach(Cliente cliente in clientes)
+                {
+                    lista.Add(cliente.ToString());
+                }
+            }
+            if (tipoExport == "Libros")
+            {
+                foreach (Libro libro in libros)
+                {
+                    lista.Add(libro.ToString());
+                }
+            }
+            if (tipoExport == "Ejemplares")
+            {
+                foreach (Ejemplar ejemplar in ejemplares)
+                {
+                    lista.Add(ejemplar.ToString());
+                }
+            }
+            if (tipoExport == "Prestamos")
+            {
+                foreach (Prestamo prestamo in prestamos)
+                {
+                    lista.Add(prestamo.ToString());
+                }
+            }
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, string.Format("Export{0}.csv", tipoExport))))
+            {
+                foreach (string line in lista)
+                    outputFile.WriteLine(line);
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            List<Cliente> clientes = checkedListBox1.Items.OfType<Cliente>().ToList();
+            ExportFile("Clientes", clientes, new List<Libro>(), new List<Ejemplar>(), new List<Prestamo>());
+            MessageBox.Show("Ya se descargó el reporte en \"C:\\MyDocuments\\ExportClientes\"");
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            List<Libro> libros = checkedListBox2.Items.OfType<Libro>().ToList();
+            ExportFile("Libros", new List<Cliente>(), libros, new List<Ejemplar>(), new List<Prestamo>());
+            MessageBox.Show("Ya se descargó el reporte en \"C:\\MyDocuments\\ExportLibros\"");
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            List<Ejemplar> ejemplares = checkedListBox3.Items.OfType<Ejemplar>().ToList();
+            ExportFile("Ejemplares", new List<Cliente>(), new List<Libro>(), ejemplares, new List<Prestamo>());
+            MessageBox.Show("Ya se descargó el reporte en \"C:\\MyDocuments\\ExportEjemplares\"");
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            List<Prestamo> prestamos = checkedListBox4.Items.OfType<Prestamo>().ToList();
+            ExportFile("Prestamos", new List<Cliente>(), new List<Libro>(), new List<Ejemplar>(), prestamos);
+            MessageBox.Show("Ya se descargó el reporte en \"C:\\MyDocuments\\ExportPrestamos\"");
         }
     }
 }
