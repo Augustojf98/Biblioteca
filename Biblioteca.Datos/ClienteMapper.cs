@@ -52,14 +52,29 @@ namespace Biblioteca.Datos
 
         private NameValueCollection ReverseMap(Cliente cliente)
         {
+            string hostName = Dns.GetHostName();
+            string usuarioUtilizado;
+            string usuario1 = ConfigurationManager.AppSettings["Legajo1"];
+            string usuario2 = ConfigurationManager.AppSettings["Legajo2"];
+            string usuario3 = ConfigurationManager.AppSettings["Legajo3"];
+
+            if (usuario1 != null)
+                usuarioUtilizado = usuario1;
+            else if (usuario2 != null)
+                usuarioUtilizado = usuario2;
+            else if (usuario3 != null)
+                usuarioUtilizado = usuario3;
+            else
+                throw new Exception("El usuario de interacción con el servidor es incorrecto.");
+
             NameValueCollection n = new NameValueCollection();
             n.Add("Id", cliente.Id.ToString());
             n.Add("DNI", cliente.DNI.ToString());
             n.Add("Nombre", cliente.Nombre);
             n.Add("Apellido", cliente.Apellido);
             n.Add("Direccion", cliente.Direccion);
-            n.Add("Usuario", ConfigurationManager.AppSettings["Legajo"]);
-            n.Add("Host", Dns.GetHostName());
+            n.Add("Usuario", usuarioUtilizado);
+            n.Add("Host", Dns.GetHostByName(hostName).AddressList[0].ToString());
             n.Add("Mail", cliente.Email); // STRING
             n.Add("Telefono", cliente.Telefono.ToString()); // INT
             n.Add("FechaAlta", cliente.FechaAlta.ToShortDateString()); // DateTime

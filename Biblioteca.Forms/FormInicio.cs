@@ -120,19 +120,28 @@ namespace Biblioteca.Forms
 
         private void button9_Click(object sender, EventArgs e)
         {
-            List<Cliente> clientes = this.checkedListBox1.CheckedItems.OfType<Cliente>().ToList();
+            //try
+            //{
+            //    List<Cliente> clientes = this.checkedListBox1.CheckedItems.OfType<Cliente>().ToList();
 
-            foreach (Cliente cliente in clientes)
-            {
-                biblioteca.EliminarCliente(cliente);
-                this.checkedListBox1.Items.Remove(cliente);
-            }
-
-            //this.CargarClientes();
-            //FormException formException = new FormException("Función en desarrollo", "Próximamente esta función será habilitada");
-            //formException.Owner = this;
-            //formException.Show();
-            //this.Enabled = false;
+            //    foreach (Cliente cliente in clientes)
+            //    {
+            //        biblioteca.EliminarCliente(cliente);
+            //        this.checkedListBox1.Items.Remove(cliente);
+            //    }
+            //}
+            //catch(Exception ex)
+            //{
+            //    FormException formException = new FormException("Error", ex.Message);
+            //    formException.Owner = this;
+            //    formException.Show();
+            //    this.Enabled = false;
+            //}
+            
+            FormException formException = new FormException("Función en desarrollo", "Próximamente esta función será habilitada");
+            formException.Owner = this;
+            formException.Show();
+            this.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
