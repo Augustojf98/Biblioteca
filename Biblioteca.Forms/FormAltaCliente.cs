@@ -16,10 +16,40 @@ namespace Biblioteca.Forms
     {
         private BibliotecaNegocio biblioteca;
 
+        bool activo; 
         public FormAltaCliente(BibliotecaNegocio bibliotecaNegocio)
         {
             InitializeComponent();
             this.biblioteca = bibliotecaNegocio;
         }
+
+        private void clickGuardar(object sender, EventArgs e)
+        {
+            try
+            {
+                activo = true;
+      
+                this.biblioteca.IngresarCliente(this.txtboxNombre.Text, this.txtboxApellido.Text, this.txtboxDirec.Text, this.txtboxTel.Text,this.txtboxNombre.Text,this.activo) ;
+                this.Owner.Enabled = true;
+                this.Close(); 
+            }
+            catch(Exception ex)
+            {
+                FormException formException = new FormException("ERROR", ex.Message);
+                formException.Owner = this;
+                formException.Show();
+                this.Enabled = false; 
+
+            }
+
+        }
+
+        private void clickCancelarCliente(object sender, EventArgs e)
+        {
+            this.Owner.Enabled = true;
+            this.Close(); 
+        }
+
+        
     }
 }

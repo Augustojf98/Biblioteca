@@ -16,10 +16,57 @@ namespace Biblioteca.Forms
     {
         private BibliotecaNegocio biblioteca;
 
+        private int libroId;
+        DateTime fechaAlta = DateTime.Now;
+
+
         public FormAltaEjemplar(BibliotecaNegocio bibliotecaNegocio)
         {
             InitializeComponent();
             this.biblioteca = bibliotecaNegocio;
+            this.Refrescar();
+            this.comboBox1.DataSource = biblioteca.GetLibros();
+            
+        }
+
+        private void Refrescar()
+        {
+            this.CargarLibros(); 
+        }
+
+        private void CargarLibros()
+        {
+            List<Libro> lista = biblioteca.GetLibros();
+           
+        }
+
+        private void clickGuardarEjemplar(object sender, EventArgs e)
+        {
+            try
+            {
+                Libro libroSelecionado = (Libro)this.comboBox1.SelectedItem;
+
+                libroId = libroSelecionado.Id;
+                fechaAlta.ToShortDateString();
+
+                this.biblioteca.IngresarEjemplar(this.libroId, this.textBox5.Text, int.Parse(textBox6.Text),this.fechaAlta);
+                this.Owner.Enabled = true;
+                this.Close(); 
+            }
+            catch (Exception ex)
+            {
+                FormException formException = new FormException("ERROR", ex.Message);
+                formException.Owner = this;
+                formException.Show();
+                this.Enabled = false;
+            }
+
+        }
+
+        private void clickCancelarEjemplar(object sender, EventArgs e)
+        {
+            this.Owner.Enabled = true;
+            this.Close();
         }
     }
 }
