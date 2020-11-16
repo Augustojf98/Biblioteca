@@ -41,29 +41,9 @@ namespace Biblioteca.Forms
 
         private void CargarClientes()
         {
+            biblioteca.Clientes = biblioteca.GetClientes();
 
-            //this.checkedListBox1.Items.Clear();
-            List<Cliente> lista = biblioteca.GetClientes();
-
-            //string value;
-            //value = Program.Cache[CLIENTES_CACHE_KEY] as string;
-            //if (value == null)
-            //{
-            //    value = biblioteca.GetClientes().ToString();
-            //}
-            //else
-            //{
-            //    Program.Cache.Insert(
-            //    CLIENTES_CACHE_KEY,
-            //    value,
-            //    null,
-            //    Cache.NoAbsoluteExpiration,
-            //    TimeSpan.FromSeconds(60));
-            //}
-
-            //lista = value;
-
-            foreach (Cliente cliente in lista)
+            foreach (Cliente cliente in biblioteca.Clientes)
             {
                 this.checkedListBox1.Items.Add(cliente);
             }
@@ -72,8 +52,9 @@ namespace Biblioteca.Forms
 
         private void CargarLibros()
         {
-            List<Libro> lista = biblioteca.GetLibros();
-            foreach (Libro libro in lista)
+            biblioteca.Libros = biblioteca.GetLibros();
+
+            foreach (Libro libro in biblioteca.Libros)
             {
                 this.checkedListBox2.Items.Add(libro);
             }
@@ -81,8 +62,9 @@ namespace Biblioteca.Forms
 
         private void CargarEjemplares()
         {
-            List<Ejemplar> lista = biblioteca.GetEjemplares();
-            foreach (Ejemplar ejemplar in lista)
+            biblioteca.Ejemplares = biblioteca.GetEjemplares();
+
+            foreach (Ejemplar ejemplar in biblioteca.Ejemplares)
             {
                 this.checkedListBox2.Items.Add(ejemplar);
             }
@@ -90,8 +72,9 @@ namespace Biblioteca.Forms
 
         private void CargarPrestamos()
         {
-            List<Prestamo> lista = biblioteca.GetPrestamos();
-            foreach (Prestamo prestamo in lista)
+            biblioteca.Prestamos = biblioteca.GetPrestamos();
+
+            foreach (Prestamo prestamo in biblioteca.Prestamos)
             {
                 this.checkedListBox4.Items.Add(prestamo);
             }
@@ -120,7 +103,7 @@ namespace Biblioteca.Forms
             formAltaLibro.Owner = this;
             formAltaLibro.Show();
             this.Enabled = false;
-            this.Refrescar();
+            //this.Refrescar();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -134,7 +117,7 @@ namespace Biblioteca.Forms
             formAltaCliente.Owner = this;
             formAltaCliente.Show();
             this.Enabled = false;
-            this.Refrescar();
+            //this.Refrescar();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -143,7 +126,7 @@ namespace Biblioteca.Forms
             formAltaEjemplar.Owner = this;
             formAltaEjemplar.Show();
             this.Enabled = false;
-            this.Refrescar();
+            //this.Refrescar();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -152,7 +135,7 @@ namespace Biblioteca.Forms
             formAltaPrestamo.Owner = this;
             formAltaPrestamo.Show();
             this.Enabled = false;
-            this.Refrescar();
+            //this.Refrescar();
         }
     }
 }

@@ -60,7 +60,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.Clientes = new System.Windows.Forms.TabControl();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@
             this.panel2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.Clientes.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -368,22 +368,22 @@
             this.checkedListBox1.Size = new System.Drawing.Size(755, 276);
             this.checkedListBox1.TabIndex = 0;
             // 
-            // Clientes
+            // tabControl1
             // 
-            this.Clientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Clientes.Controls.Add(this.tabPage1);
-            this.Clientes.Controls.Add(this.tabPage5);
-            this.Clientes.Controls.Add(this.tabPage2);
-            this.Clientes.Controls.Add(this.tabPage3);
-            this.Clientes.Location = new System.Drawing.Point(12, 29);
-            this.Clientes.MaximumSize = new System.Drawing.Size(1500, 825);
-            this.Clientes.MinimumSize = new System.Drawing.Size(775, 426);
-            this.Clientes.Name = "Clientes";
-            this.Clientes.SelectedIndex = 0;
-            this.Clientes.Size = new System.Drawing.Size(775, 441);
-            this.Clientes.TabIndex = 0;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(12, 29);
+            this.tabControl1.MaximumSize = new System.Drawing.Size(1500, 825);
+            this.tabControl1.MinimumSize = new System.Drawing.Size(775, 426);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(775, 441);
+            this.tabControl1.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -611,7 +611,7 @@
             this.ClientSize = new System.Drawing.Size(800, 482);
             this.ControlBox = false;
             this.Controls.Add(this.button10);
-            this.Controls.Add(this.Clientes);
+            this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormInicio";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -622,7 +622,7 @@
             this.tabPage1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.Clientes.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -657,7 +657,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.TabControl Clientes;
+        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label7;

@@ -14,6 +14,58 @@ namespace Biblioteca.Negocio
         private LibroMapper libroMapper;
         private PrestamoMapper prestamoMapper;
         private EjemplarMapper ejemplarMapper;
+        private List<Cliente> _clientes;
+        private List<Libro> _libros;
+        private List<Ejemplar> _ejemplares;
+        private List<Prestamo> _prestamos;
+
+        public List<Cliente> Clientes
+        {
+            get
+            {
+                return this._clientes;
+            }
+            set
+            {
+                this._clientes = value;
+            }
+        }
+
+        public List<Libro> Libros
+        {
+            get
+            {
+                return this._libros;
+            }
+            set
+            {
+                this._libros = value;
+            }
+        }
+
+        public List<Ejemplar> Ejemplares
+        {
+            get
+            {
+                return this._ejemplares;
+            }
+            set
+            {
+                this._ejemplares = value;
+            }
+        }
+
+        public List<Prestamo> Prestamos
+        {
+            get
+            {
+                return this._prestamos;
+            }
+            set
+            {
+                this._prestamos = value;
+            }
+        }
 
         public BibliotecaNegocio()
         {
@@ -21,6 +73,10 @@ namespace Biblioteca.Negocio
             libroMapper = new LibroMapper();
             ejemplarMapper = new EjemplarMapper();
             prestamoMapper = new PrestamoMapper();
+            _clientes = new List<Cliente>();
+            _libros = new List<Libro>();
+            _ejemplares = new List<Ejemplar>();
+            _prestamos = new List<Prestamo>();
         }
 
         public List<Cliente> GetClientes()
@@ -32,6 +88,7 @@ namespace Biblioteca.Negocio
             }
             else
             {
+                this._clientes = clientes;
                 return clientes;
             }
         }
@@ -45,6 +102,7 @@ namespace Biblioteca.Negocio
             }
             else
             {
+                this._libros = libros;
                 return libros;
             }
         }
@@ -58,6 +116,7 @@ namespace Biblioteca.Negocio
             }
             else
             {
+                this._ejemplares = ejemplares;
                 return ejemplares;
             }
         }
@@ -71,14 +130,15 @@ namespace Biblioteca.Negocio
             }
             else
             {
+                this._prestamos = prestamos;
                 return prestamos;
             }
         }
 
         public Cliente BuscarClienteById(int id)
         {
-            List<Cliente> clientes = GetClientes();
-            foreach(Cliente c in clientes)
+            //List<Cliente> clientes = GetClientes();
+            foreach(Cliente c in this._clientes)
             {
                 if(c.IdCliente == id)
                 {
@@ -90,8 +150,8 @@ namespace Biblioteca.Negocio
 
         public Libro BuscarLibroById(int id)
         {
-            List<Libro> libros = GetLibros();
-            foreach (Libro l in libros)
+            //List<Libro> libros = GetLibros();
+            foreach (Libro l in this._libros)
             {
                 if (l.Id == id)
                 {
@@ -103,8 +163,8 @@ namespace Biblioteca.Negocio
 
         public Prestamo BuscarPrestamoById(int id)
         {
-            List<Prestamo> prestamos = GetPrestamos();
-            foreach (Prestamo p in prestamos)
+            //List<Prestamo> prestamos = GetPrestamos();
+            foreach (Prestamo p in this._prestamos)
             {
                 if (p.Id == id)
                 {
@@ -116,8 +176,8 @@ namespace Biblioteca.Negocio
 
         public Ejemplar BuscarEjemplarById(int id)
         {
-            List<Ejemplar> ejemplares = GetEjemplares();
-            foreach (Ejemplar e in ejemplares)
+            //List<Ejemplar> ejemplares = GetEjemplares();
+            foreach (Ejemplar e in this._ejemplares)
             {
                 if (e.Id == id)
                 {
@@ -178,6 +238,7 @@ namespace Biblioteca.Negocio
 
             if (result.IsOk)
             {
+                this._clientes.Add(cliente);
                 return result.Id;
             }
             else
@@ -206,6 +267,7 @@ namespace Biblioteca.Negocio
 
             if (result.IsOk)
             {
+                this._libros.Add(libro);
                 return result.Id;
             }
             else
@@ -234,6 +296,7 @@ namespace Biblioteca.Negocio
 
             if (result.IsOk)
             {
+                this._prestamos.Add(prestamo);
                 return result.Id;
             }
             else
@@ -262,6 +325,7 @@ namespace Biblioteca.Negocio
 
             if (result.IsOk)
             {
+                this._ejemplares.Add(ejemplar);
                 return result.Id;
             }
             else
