@@ -44,12 +44,13 @@ namespace Biblioteca.Forms
         {
             try
             {
-                Libro libroSelecionado = (Libro)this.comboBox1.SelectedItem;
+                Libro libroSeleccionado = (Libro)this.comboBox1.SelectedItem;
 
-                libroId = libroSelecionado.Id;
+                libroId = libroSeleccionado.Id;
                 fechaAlta.ToShortDateString();
 
                 this.biblioteca.IngresarEjemplar(this.libroId, this.textBox5.Text, int.Parse(textBox6.Text),this.fechaAlta);
+                MessageBox.Show(string.Format("Se registró con éxito el ejemplar del libro \"{0}\".", libroSeleccionado.Titulo));
                 this.Owner.Enabled = true;
                 this.Close(); 
             }

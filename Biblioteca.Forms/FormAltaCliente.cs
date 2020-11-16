@@ -29,7 +29,8 @@ namespace Biblioteca.Forms
             {
                 activo = true;
       
-                this.biblioteca.IngresarCliente(this.txtboxNombre.Text, this.txtboxApellido.Text, this.txtboxDirec.Text, this.txtboxTel.Text,this.txtboxNombre.Text,this.activo) ;
+                this.biblioteca.IngresarCliente(this.txtboxNombre.Text, this.txtboxApellido.Text, this.txtboxDirec.Text, this.txtboxTel.Text,this.txtboxNombre.Text,this.activo);
+                MessageBox.Show(string.Format("Se registró con éxito el cliente \"{0} {1}\".", this.txtboxNombre.Text, this.txtboxApellido.Text));
                 this.Owner.Enabled = true;
                 this.Close(); 
             }

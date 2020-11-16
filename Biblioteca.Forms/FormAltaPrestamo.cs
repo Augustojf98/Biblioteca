@@ -21,5 +21,24 @@ namespace Biblioteca.Forms
             InitializeComponent();
             this.biblioteca = bibliotecaNegocio;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                MessageBox.Show(string.Format("Se registró con éxito el préstamo."));
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Owner.Enabled = true;
+            this.Close();
+        }
     }
 }

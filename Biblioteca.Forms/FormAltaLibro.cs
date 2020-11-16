@@ -32,6 +32,7 @@ namespace Biblioteca.Forms
             try
             {
                 this.biblioteca.IngresarLibro(this.textBox1.Text, this.textBox2.Text, int.Parse(this.textBox3.Text), this.textBox4.Text, int.Parse(this.textBox5.Text), this.textBox6.Text);
+                MessageBox.Show(string.Format("Se registró con éxito el libro \"{0}\".", this.textBox1.Text));
                 this.Owner.Enabled = true;
                 this.Close();
             }
