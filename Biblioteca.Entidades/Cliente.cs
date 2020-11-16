@@ -10,23 +10,22 @@ namespace Biblioteca.Entidades
     [DataContract]
     public class Cliente : Persona
     {
-        private int _idCliente;
+        private int _id;
         private DateTime _fechaAlta;
         private bool _activo; 
 
         public Cliente() { }
-       
 
         [DataMember]
-        public int IdCliente
+        public int Id
         {
             get
             {
-                return this._idCliente;
+                return this._id;
             }
             set
             {
-                this._idCliente = value;
+                this._id = value;
             }
         }
 
@@ -56,16 +55,17 @@ namespace Biblioteca.Entidades
             }
         }
 
-        public Cliente(int idcliente, string fechaAlta, bool activo, int id, string nombre, string apellido, string direccion, string telefono, string mail)
+        public Cliente(int idcliente, string fechaAlta, string fechaNacimiento, bool activo, int dni, string nombre, string apellido, string direccion, string telefono, string mail)
         {
-            this._id = id;
+            this._id = idcliente;
             this._nombre = nombre;
             this._apellido = apellido;
             this._direccion = direccion;
             this._telefono = telefono;
-            this._mail = mail;
-            this._idCliente = idcliente;
+            this._email = mail;
+            this._dni = dni;
             this._fechaAlta = Convert.ToDateTime(fechaAlta);
+            this._fechaNacimiento = Convert.ToDateTime(fechaNacimiento);
             this._activo = activo; 
         }
 

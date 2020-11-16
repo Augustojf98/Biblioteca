@@ -10,22 +10,23 @@ namespace Biblioteca.Entidades
     [DataContract]
     public class Persona
     {
-        protected int _id;
+        protected int _dni;
         protected string _nombre;
         protected string _apellido;
         protected string _direccion;
         protected string _telefono;
-        protected string _mail;
+        protected string _email;
+        protected DateTime _fechaNacimiento;
 
-        public int Id
+        public int DNI
         {
             get
             {
-                return this._id;
+                return this._dni;
             }
             set
             {
-                this._id = value;
+                this._dni = value;
             }
         }
 
@@ -82,18 +83,30 @@ namespace Biblioteca.Entidades
         }
 
         [DataMember]
-        public string Mail
+        public string Email
         {
             get
             {
-                return this._mail;
+                return this._email;
             }
             set
             {
-                this._mail = value;
+                this._email = value;
             }
         }
 
+        [DataMember]
+        public DateTime FechaNacimiento
+        {
+            get
+            {
+                return this._fechaNacimiento;
+            }
+            set
+            {
+                this._fechaNacimiento = value;
+            }
+        }
 
 
     }

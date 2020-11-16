@@ -136,7 +136,7 @@ namespace Biblioteca.Negocio
             }
             else
             {
-                Cliente cliente;
+                //Cliente cliente;
 
                 foreach (Prestamo prestamo in prestamos)
                 {
@@ -227,6 +227,7 @@ namespace Biblioteca.Negocio
 
             if (result.IsOk)
             {
+                this._clientes.Remove(cliente);
                 return result.Id;
             }
             else
@@ -235,12 +236,12 @@ namespace Biblioteca.Negocio
             }
         }
 
-        public int IngresarCliente(string nombre, string apellido, string direccion, string telefono, string mail, bool activo)
+        public int IngresarCliente(string nombre, string apellido, DateTime fechaNacimiento, string direccion, string telefono, string mail, bool activo)
         {
             List<Cliente> clientes = this.GetClientes();
             int idNuevoCliente = this.UltimoCodCliente() + 1;
 
-            Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToShortDateString(), activo, idNuevoCliente, nombre, apellido, direccion, telefono, mail);
+            Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToShortDateString(), fechaNacimiento.ToShortDateString(), activo, idNuevoCliente, nombre, apellido, direccion, telefono, mail);
 
             foreach (Cliente c in clientes)
             {
@@ -248,7 +249,7 @@ namespace Biblioteca.Negocio
                 {
                     throw new Exception(string.Format("Ya existe un cliente llamado \"{0} {1}\"", nombre, apellido));
                 }
-                if (c.Telefono == cliente.Telefono || c.Mail.ToUpper() == cliente.Mail.ToUpper())
+                if (c.Telefono == cliente.Telefono || c.Email.ToUpper() == cliente.Email.ToUpper())
                 {
                     throw new Exception(string.Format("El email \"{0}\" o el teléfono \"{1}\" se encuentran ya registrados.", mail, telefono));
                 }
@@ -364,7 +365,7 @@ namespace Biblioteca.Negocio
             }
             else
             {
-                return clientes.LastOrDefault().IdCliente;
+                return clientes.LastOrDefault().Id;
             }
         }
 
