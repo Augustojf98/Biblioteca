@@ -122,7 +122,7 @@ namespace Biblioteca.Entidades
 
         public override string ToString()
         {
-            return string.Format("{0} - {1}", _titulo.ToUpper(), _autor.ToUpper());
+            return string.Format("{0} - {1}", _titulo?.ToUpper(), _autor?.ToUpper());
         }
 
     }

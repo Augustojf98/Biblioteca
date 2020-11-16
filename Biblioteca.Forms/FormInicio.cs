@@ -93,8 +93,8 @@ namespace Biblioteca.Forms
         private void CargaInicial()
         {
             this.CargarClientes();
-            this.CargarEjemplares();
             this.CargarLibros();
+            this.CargarEjemplares();
             this.CargarPrestamos();
         }
 

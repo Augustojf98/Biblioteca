@@ -69,7 +69,7 @@ namespace Biblioteca.Entidades
 
         public override string ToString()
         {
-            return string.Format("Cliente {0}, {1}", this._apellido, this._nombre);
+            return string.Format("Cliente {0}, {1}", this._apellido?.ToUpper(), this._nombre?.ToUpper());
         }
     }
  

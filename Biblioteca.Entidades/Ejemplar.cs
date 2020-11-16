@@ -12,6 +12,7 @@ namespace Biblioteca.Entidades
     {
         private int _id;
         private int _idLibro;
+        private string _nombreLibro;
         private string _observaciones;
         private double _precio;
         private DateTime _fechaAlta;
@@ -92,12 +93,24 @@ namespace Biblioteca.Entidades
             this._idLibro = idLibro;
             this._observaciones = observaciones;
             this._precio = precio;
-            this._fechaAlta = Convert.ToDateTime(fechaAlta); 
+            this._fechaAlta = Convert.ToDateTime(fechaAlta);
+        }
+
+        public string NombreLibro
+        {
+            get
+            {
+                return this._nombreLibro;
+            }
+            set
+            {
+                this._nombreLibro = value;
+            }
         }
 
         public override string ToString()
         {
-            return string.Format("{0} - {1} - {2} - {3}", _idLibro, _observaciones, _precio, _fechaAlta);
+            return string.Format("{0} | {1} | $ {2} | {3}", _nombreLibro?.ToUpper(), _observaciones, _precio, _fechaAlta);
         }
     }
 

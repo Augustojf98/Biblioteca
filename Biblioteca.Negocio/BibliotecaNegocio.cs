@@ -116,6 +116,12 @@ namespace Biblioteca.Negocio
             }
             else
             {
+                foreach(Ejemplar ejemplar in ejemplares)
+                {
+                    if(ejemplar.IdLibro != 0)
+                        ejemplar.NombreLibro = this.BuscarLibroById(ejemplar.IdLibro).Titulo;
+                }
+
                 this._ejemplares = ejemplares;
                 return ejemplares;
             }
