@@ -21,7 +21,8 @@ namespace Biblioteca.Forms
         {
             InitializeComponent();
             biblioteca = new BibliotecaNegocio();
-            this.Refrescar();
+            this.CargaInicial();
+            this.CargarArrays();
             this.comboBox1.DataSource = biblioteca.GetLibros();
 
             if(biblioteca.GetLibros().Count == 0)
@@ -31,7 +32,63 @@ namespace Biblioteca.Forms
             }
         }
 
-        private void Refrescar()
+        public void CargarArrays()
+        {
+            if(biblioteca.Clientes.Count > 0)
+            {
+                this.checkedListBox1.Enabled = true;
+                foreach (Cliente cliente in biblioteca.Clientes)
+                {
+                    this.checkedListBox1.Items.Add(cliente);
+                }
+            }
+            else
+            {
+                this.checkedListBox1.Items.Add("No hay clientes guardados");
+                this.checkedListBox1.Enabled = false;
+            }
+            if (biblioteca.Libros.Count > 0)
+            {
+                this.checkedListBox2.Enabled = true;
+                foreach (Libro libro in biblioteca.Libros)
+                {
+                    this.checkedListBox2.Items.Add(libro);
+                }
+            }
+            else
+            {
+                this.checkedListBox2.Items.Add("No hay libros guardados");
+                this.checkedListBox2.Enabled = false;
+            }
+            if (biblioteca.Ejemplares.Count > 0)
+            {
+                this.checkedListBox3.Enabled = true;
+                foreach (Ejemplar ejemplar in biblioteca.Ejemplares)
+                {
+                    this.checkedListBox3.Items.Add(ejemplar);
+                }
+            }
+            else
+            {
+                this.checkedListBox3.Items.Add("No hay ejemplares guardados");
+                this.checkedListBox3.Enabled = false;
+            }
+            if (biblioteca.Prestamos.Count > 0)
+            {
+                this.checkedListBox4.Enabled = true;
+                foreach (Prestamo prestamo in biblioteca.Prestamos)
+                {
+                    this.checkedListBox4.Items.Add(prestamo);
+                }
+            }
+            else
+            {
+                this.checkedListBox4.Items.Add("No hay préstamos registrados");
+                this.checkedListBox4.Enabled = false;
+            }
+        }
+
+        private void CargaInicial()
         {
             this.CargarClientes();
             this.CargarEjemplares();
@@ -42,42 +99,21 @@ namespace Biblioteca.Forms
         private void CargarClientes()
         {
             biblioteca.Clientes = biblioteca.GetClientes();
-
-            foreach (Cliente cliente in biblioteca.Clientes)
-            {
-                this.checkedListBox1.Items.Add(cliente);
-            }
-
         }
 
         private void CargarLibros()
         {
             biblioteca.Libros = biblioteca.GetLibros();
-
-            foreach (Libro libro in biblioteca.Libros)
-            {
-                this.checkedListBox2.Items.Add(libro);
-            }
         }
 
         private void CargarEjemplares()
         {
             biblioteca.Ejemplares = biblioteca.GetEjemplares();
-
-            foreach (Ejemplar ejemplar in biblioteca.Ejemplares)
-            {
-                this.checkedListBox2.Items.Add(ejemplar);
-            }
         }
 
         private void CargarPrestamos()
         {
             biblioteca.Prestamos = biblioteca.GetPrestamos();
-
-            foreach (Prestamo prestamo in biblioteca.Prestamos)
-            {
-                this.checkedListBox4.Items.Add(prestamo);
-            }
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -103,7 +139,12 @@ namespace Biblioteca.Forms
             formAltaLibro.Owner = this;
             formAltaLibro.Show();
             this.Enabled = false;
-            //this.Refrescar();
+            formAltaLibro.FormClosed += FormAltaLibro_FormClosed;
+        }
+
+        private void FormAltaLibro_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.CargarArrays();
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -117,7 +158,13 @@ namespace Biblioteca.Forms
             formAltaCliente.Owner = this;
             formAltaCliente.Show();
             this.Enabled = false;
+            formAltaCliente.FormClosed += FormAltaCliente_FormClosed;
             //this.Refrescar();
+        }
+
+        private void FormAltaCliente_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.CargarArrays();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -126,7 +173,13 @@ namespace Biblioteca.Forms
             formAltaEjemplar.Owner = this;
             formAltaEjemplar.Show();
             this.Enabled = false;
+            formAltaEjemplar.FormClosed += FormAltaEjemplar_FormClosed;
             //this.Refrescar();
+        }
+
+        private void FormAltaEjemplar_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.CargarArrays();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -135,7 +188,13 @@ namespace Biblioteca.Forms
             formAltaPrestamo.Owner = this;
             formAltaPrestamo.Show();
             this.Enabled = false;
+            formAltaPrestamo.FormClosed += FormAltaPrestamo_FormClosed;
             //this.Refrescar();
+        }
+
+        private void FormAltaPrestamo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.CargarArrays();
         }
     }
 }
