@@ -31,15 +31,26 @@ namespace Biblioteca.Datos
             return resultadoTransaccion;
         }
 
-        public TransactionResult Delete(Cliente cliente)
+        public TransactionResult Put(Cliente cliente)
         {
             NameValueCollection obj = ReverseMap(cliente);
+
+            string result = WebHelper.Put("/cliente", obj);
+
+            TransactionResult resultadoTransaccion = MapResultado(result);
+
+            return resultadoTransaccion;
+        }
+
+        public TransactionResult Delete(Cliente cliente)
+        {
+            NameValueCollection obj = new NameValueCollection();
+
+            obj.Add("id", cliente.Id.ToString());
 
             string result = WebHelper.Delete("/cliente", obj);
 
             TransactionResult resultadoTransaccion = MapResultado(result);
-
-            List<Cliente> clientes = TraerTodos();
 
             return resultadoTransaccion;
         }
