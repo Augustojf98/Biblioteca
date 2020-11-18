@@ -26,7 +26,7 @@ namespace Biblioteca.Forms
         {
             try
             {
-
+                Prestamo prestamo = new Prestamo(textBox1_TextChanged.selected(), );
                 MessageBox.Show(string.Format("Se registró con éxito el préstamo."));
             }
             catch
@@ -39,6 +39,31 @@ namespace Biblioteca.Forms
         {
             this.Owner.Enabled = true;
             this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Libro libro =  comboBox1.SelectedItem as Libro;
+        }
+
+        private void FormAltaPrestamo_Load(object sender, EventArgs e)
+        {
+            List<Libro> lst = biblioteca.GetLibros();
+            foreach (Libro libro in lst)
+            {
+                comboBox1.Items.Add(libro);
+            }
+            
         }
     }
 }

@@ -271,5 +271,10 @@ namespace Biblioteca.Forms
             ExportFile("Prestamos", new List<Cliente>(), new List<Libro>(), new List<Ejemplar>(), prestamos);
             MessageBox.Show("Ya se descargó el reporte en \"C:\\MyDocuments\\ExportPrestamos\"");
         }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            var altaPrestamo = new FormAltaPrestamo(biblioteca);
+        }
     }
 }
