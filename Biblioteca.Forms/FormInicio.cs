@@ -325,23 +325,26 @@ namespace Biblioteca.Forms
 
         private void button8_Click(object sender, EventArgs e)
         {
-
-            foreach (Prestamo prestamo in biblioteca.Prestamos)
-            {
-                checkedListBox4.Items.Add(prestamo);
-            }
+            List<Prestamo> prestamos = biblioteca.Prestamos;
 
             if (!textBox12.Equals(null))
             {
-                checkedListBox4.Items.Cast<Prestamo>().Where(x => (x.Id == int.Parse(textBox12.Text)));
+                prestamos = prestamos.FindAll(x => x.Id == int.Parse(textBox12.Text));
             }
             if (!comboBox3.SelectedValue.Equals(null))
             {
-                checkedListBox4.Items.Cast<Prestamo>().Where(x => (x.IdCliente == (comboBox3.SelectedValue as Cliente).Id));
+                prestamos = prestamos.FindAll(x => x.IdCliente == (comboBox3.SelectedValue as Cliente).Id);
             }
-            if (!comboBox2.SelectedItem.Equals(null))
+            if (!comboBox2.SelectedValue.Equals(null))
             {
-                checkedListBox4.Items.Cast<Prestamo>().Where(x =>(x.IdEjemplar == (comboBox2.SelectedValue as Ejemplar).Id));
+                prestamos = prestamos.FindAll(x => x.IdEjemplar == (comboBox2.SelectedValue as Ejemplar).Id);
+            }
+
+            checkedListBox4.Items.Clear();
+
+            foreach (Prestamo prestamo in prestamos)
+            {
+                checkedListBox4.Items.Add(prestamo);
             }
         }
 
@@ -406,45 +409,52 @@ namespace Biblioteca.Forms
 
         private void button7_Click(object sender, EventArgs e)
         {
-
-            foreach (Ejemplar ejemplar in biblioteca.Ejemplares)
-            {
-                checkedListBox3.Items.Add(ejemplar);
-            }
+            List<Ejemplar> ejemplares = biblioteca.Ejemplares;
 
             if (!textBox9.Equals(null))
             {
-                checkedListBox3.Items.Cast<Ejemplar>().Where(x => (x.Id == int.Parse(textBox9.Text)));
+                ejemplares = ejemplares.FindAll(x => x.Id == int.Parse(textBox9.Text));
             }
-            if (!comboBox3.SelectedValue.Equals(null))
+            if (!comboBox1.SelectedValue.Equals(null))
             {
-                checkedListBox3.Items.Cast<Ejemplar>().Where(x => (x.IdLibro == (comboBox1.SelectedValue as Libro).Id));
+                ejemplares = ejemplares.FindAll(x => x.IdLibro == (comboBox1.SelectedValue as Libro).Id);
             }
-            if (!comboBox2.SelectedItem.Equals(null))
+            if (!textBox7.Equals(null))
             {
-                checkedListBox3.Items.Cast<Ejemplar>().Where(x => (x.Precio == int.Parse(textBox9.Text)));
+                ejemplares = ejemplares.FindAll(x => x.Precio == int.Parse(textBox7.Text));
+            }
+
+            checkedListBox3.Items.Clear();
+
+            foreach (Ejemplar ejemplar in ejemplares)
+            {
+                checkedListBox3.Items.Add(ejemplar);
             }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
 
-            foreach (Libro libro in biblioteca.Libros)
-            {
-                checkedListBox2.Items.Add(libro);
-            }
+            List<Libro> libros = biblioteca.Libros;
 
             if (!textBox6.Equals(null))
             {
-                checkedListBox2.Items.Cast<Libro>().Where(x => (x.Id == int.Parse(textBox6.Text)));
+                libros = libros.FindAll(x => x.Id == int.Parse(textBox6.Text));
             }
             if (!textBox5.Text.Equals(null))
             {
-                checkedListBox2.Items.Cast<Libro>().Where(x => (x.Titulo.ToLower() == textBox5.Text.ToLower()));
+                libros = libros.FindAll(x => (x.Titulo ?? "").ToLower() == textBox5.Text.ToLower());
             }
             if (!textBox4.Text.Equals(null))
             {
-                checkedListBox2.Items.Cast<Libro>().Where(x => (x.Autor.ToLower() == textBox4.Text.ToLower()));
+                libros = libros.FindAll(x => (x.Autor ?? "").ToLower() == textBox4.Text.ToLower());
+            }
+
+            checkedListBox2.Items.Clear();
+
+            foreach (Libro libro in libros)
+            {
+                checkedListBox2.Items.Add(libro);
             }
         }
 
