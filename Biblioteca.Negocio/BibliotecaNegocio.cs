@@ -298,7 +298,7 @@ namespace Biblioteca.Negocio
 
         }
 
-        public int IngresarPrestamo(int idCliente, int idEjemplar, int plazo, DateTime fechaAlta, DateTime fechaBaja, string tema)
+        public int IngresarPrestamo(int idCliente, int idEjemplar, int plazo, DateTime fechaAlta, DateTime fechaBaja)
         {
             List<Prestamo> prestamos = this.GetPrestamos();
             int idNuevoPrestamo = this.UltimoCodPrestamo() + 1;

@@ -68,12 +68,6 @@
     <Compile Include="FormAltaLibro.Designer.cs">
       <DependentUpon>FormAltaLibro.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAltaPrestamoCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAltaPrestamoCliente.Designer.cs">
-      <DependentUpon>FormAltaPrestamoCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormAltaPrestamoLibro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +79,12 @@
     </Compile>
     <Compile Include="FormException.Designer.cs">
       <DependentUpon>FormException.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormGestionarPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGestionarPrestamo.Designer.cs">
+      <DependentUpon>FormGestionarPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInicio.cs">
       <SubType>Form</SubType>
