@@ -68,11 +68,11 @@
     <Compile Include="FormAltaLibro.Designer.cs">
       <DependentUpon>FormAltaLibro.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAltaPrestamoLibro.cs">
+    <Compile Include="FormAltaPrestamo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAltaPrestamoLibro.Designer.cs">
-      <DependentUpon>FormAltaPrestamoLibro.cs</DependentUpon>
+    <Compile Include="FormAltaPrestamo.Designer.cs">
+      <DependentUpon>FormAltaPrestamo.cs</DependentUpon>
     </Compile>
     <Compile Include="FormException.cs">
       <SubType>Form</SubType>
@@ -103,11 +103,14 @@
     <EmbeddedResource Include="FormAltaLibro.resx">
       <DependentUpon>FormAltaLibro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAltaPrestamoLibro.resx">
-      <DependentUpon>FormAltaPrestamoLibro.cs</DependentUpon>
+    <EmbeddedResource Include="FormAltaPrestamo.resx">
+      <DependentUpon>FormAltaPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormException.resx">
       <DependentUpon>FormException.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormGestionarPrestamo.resx">
+      <DependentUpon>FormGestionarPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>

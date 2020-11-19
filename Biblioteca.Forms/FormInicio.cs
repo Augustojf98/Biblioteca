@@ -281,7 +281,7 @@ namespace Biblioteca.Forms
 
         private void button15_Click(object sender, EventArgs e)
         {
-            FormAltaPrestamo altaPrestamo = new FormAltaPrestamo(this.biblioteca);
+            FormAltaPrestamo altaPrestamo = new FormAltaPrestamo(Biblioteca);
             altaPrestamo.Owner = this;
             altaPrestamo.Show();
             this.Enabled = false;
@@ -366,5 +366,18 @@ namespace Biblioteca.Forms
         {
 
         }
+
+        public BibliotecaNegocio Biblioteca
+        {
+            get
+            {
+                return biblioteca;
+            }
+            set
+            {
+                biblioteca = value;
+            }
+        }
+
     }
 }

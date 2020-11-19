@@ -14,24 +14,24 @@ namespace Biblioteca.Forms
 {
     public partial class FormAltaPrestamo : Form
     {
-        private BibliotecaNegocio biblioteca;
         private Libro _libro;
-        private List<Prestamo> _listaPrestamos;
         private Ejemplar _ejemplar;
         private Cliente _cliente;
+        List<Prestamo> _listaPrestamos;
+        private BibliotecaNegocio _biblioteca;
 
-        public FormAltaPrestamo(BibliotecaNegocio bibliotecaNegocio)
+        public FormAltaPrestamo(BibliotecaNegocio biblioteca)
         {
             InitializeComponent();
-            this.biblioteca = bibliotecaNegocio;
-            this.ListaPrestamos = biblioteca.GetPrestamos();
+            _biblioteca = biblioteca;
+            this.ListaPrestamos = _biblioteca.GetPrestamos();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (!comboBox1.Equals(null) & !comboBox2.Equals(null) & numericUpDown1.Value > 0 & dateTimePicker1.Value > DateTime.Now)
             {
-                biblioteca.IngresarPrestamo(Cliente.Id, Ejemplar.Id, Decimal.ToInt32(numericUpDown1.Value), DateTime.Now, dateTimePicker1.Value);
+                _biblioteca.IngresarPrestamo(Cliente.Id, Ejemplar.Id, Decimal.ToInt32(numericUpDown1.Value), DateTime.Now, dateTimePicker1.Value);
                 MessageBox.Show("Prestamo creado...");
                 this.Owner.Enabled = true;
                 this.Close();
@@ -63,7 +63,7 @@ namespace Biblioteca.Forms
             List<bool> ejemplarDisponible = new List<bool>();
             Libro =  comboBox1.SelectedItem as Libro;
             int copiasPrestadas = 0;
-            List<Ejemplar> lst = this.biblioteca.BuscarEjemplaresByIdLibro(Libro.Id);
+            List<Ejemplar> lst = _biblioteca.BuscarEjemplaresByIdLibro(Libro.Id);
             
             foreach (Ejemplar ejemplar1 in lst)
             {
@@ -102,8 +102,8 @@ namespace Biblioteca.Forms
 
         private void FormAltaPrestamo_Load(object sender, EventArgs e)
         {
-            List<Libro> lstLibros = biblioteca.GetLibros();
-            List<Cliente> lstCliente = biblioteca.GetClientes();
+            List<Libro> lstLibros = _biblioteca.GetLibros();
+            List<Cliente> lstCliente = _biblioteca.GetClientes();
             foreach (Libro libro in lstLibros)
             {
                 comboBox1.Items.Add(libro);
