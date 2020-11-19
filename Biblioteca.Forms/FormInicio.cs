@@ -193,11 +193,11 @@ namespace Biblioteca.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FormAltaPrestamoLibro formAltaPrestamo = new FormAltaPrestamoLibro(biblioteca);
-            formAltaPrestamo.Owner = this;
-            formAltaPrestamo.Show();
+            FormGestionarPrestamo formGestionarPrestamo = new FormGestionarPrestamo(checkedListBox4.SelectedItem as Prestamo);
+            formGestionarPrestamo.Owner = this;
+            formGestionarPrestamo.Show();
             this.Enabled = false;
-            formAltaPrestamo.FormClosed += FormAltaPrestamo_FormClosed;
+            formGestionarPrestamo.FormClosed += FormAltaPrestamo_FormClosed;
         }
 
         private void FormAltaPrestamo_FormClosed(object sender, FormClosedEventArgs e)
@@ -274,7 +274,7 @@ namespace Biblioteca.Forms
 
         private void button15_Click(object sender, EventArgs e)
         {
-            FormAltaPrestamoLibro altaPrestamo = new FormAltaPrestamoLibro(biblioteca);
+            FormAltaPrestamo altaPrestamo = new FormAltaPrestamo(this.biblioteca);
             altaPrestamo.Owner = this;
             altaPrestamo.Show();
             this.Enabled = false;
@@ -283,34 +283,7 @@ namespace Biblioteca.Forms
 
         private void FormInicio_Load(object sender, EventArgs e)
         {
-            List<Prestamo> lstPrestamos = biblioteca.GetPrestamos();
-            List<Ejemplar> lstEjemplares = biblioteca.GetEjemplares();
-            List<Libro> lstLibros = biblioteca.GetLibros();
-            List<Cliente> lstClientes = biblioteca.GetClientes();
-            foreach (Prestamo prestamo in lstPrestamos)
-            {
-                checkedListBox4.Items.Add(prestamo);
-            }
-            foreach (Ejemplar ejemplar in lstEjemplares)
-            {
-                checkedListBox3.Items.Add(ejemplar);
-            }
-            foreach (Libro libro in lstLibros)
-            {
-                checkedListBox2.Items.Add(libro);
-            }
-            foreach(Cliente cliente in lstClientes)
-            {
-                checkedListBox1.Items.Add(cliente);
-            }
-            foreach(Cliente cliente in lstClientes)
-            {
-                comboBox3.Items.Add(cliente);
-            }
-            foreach (Ejemplar ejemplar in lstEjemplares)
-            {
-                comboBox2.Items.Add(ejemplar);
-            }
+
         }
 
         private void checkedListBox4_SelectedIndexChanged(object sender, EventArgs e)
@@ -348,11 +321,23 @@ namespace Biblioteca.Forms
             int id = int.Parse(textBox12.Text);
             Cliente cliente = comboBox3.SelectedValue as Cliente;
             Ejemplar ejemplar = comboBox2.SelectedValue as Ejemplar;
+            foreach (Prestamo prestamo in biblioteca.GetPrestamos())
+            {
+                checkedListBox4.Items.Add(prestamo);
+            }
 
-            checkedListBox4.Items.Cast<Prestamo>().Where(x => (x.Id == id) & (x.IdCliente == cliente.Id) & (x.IdEjemplar == ejemplar.Id));
-            textBox12.ResetText();
-            comboBox3.ResetText();
-            comboBox2.ResetText();
+            if (!textBox12.Equals(null))
+            {
+                checkedListBox4.Items.Cast<Prestamo>().Where(x => (x.Id == id));
+            }
+            if (!comboBox3.SelectedValue.Equals(null))
+            {
+                checkedListBox4.Items.Cast<Prestamo>().Where(x => (x.IdCliente == cliente.Id));
+            }
+            if (!comboBox2.SelectedItem.Equals(null))
+            {
+                checkedListBox4.Items.Cast<Prestamo>().Where(x =>(x.IdEjemplar == ejemplar.Id));
+            }
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -361,6 +346,16 @@ namespace Biblioteca.Forms
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
         {
 
         }

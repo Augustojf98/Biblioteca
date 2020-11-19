@@ -71,7 +71,7 @@ namespace Biblioteca.Forms
                 {
                     foreach (Prestamo prestamo1 in ListaPrestamos)
                     {
-                        if (prestamo1.IdEjemplar == ejemplar1.Id & prestamo1.FechaBaja > DateTime.Now)
+                        if (prestamo1.IdEjemplar == ejemplar1.Id & prestamo1.FechaBajaReal.Equals(null))
                         {
                             copiasPrestadas+=1;
                         }

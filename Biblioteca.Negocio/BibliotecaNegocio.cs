@@ -408,5 +408,36 @@ namespace Biblioteca.Negocio
             }
         }
 
+        public int ActualizarPrestamo(Prestamo prestamo)
+        {
+            TransactionResult result = prestamoMapper.Put(prestamo);
+
+            if (result.IsOk)
+            {
+                _prestamos = GetPrestamos();
+                return result.Id;
+            }
+            else
+            {
+                throw new Exception(string.Format("Ocurrió un error en el servidor. Detalle: \"{0}\"", result.Error));
+            }
+
+        }
+        public int EliminarPrestamo(Prestamo prestamo)
+        {
+            TransactionResult result = prestamoMapper.Delete(prestamo);
+
+            if (result.IsOk)
+            {
+                _prestamos = GetPrestamos();
+                return result.Id;
+            }
+            else
+            {
+                throw new Exception(string.Format("Ocurrió un error en el servidor. Detalle: \"{0}\"", result.Error));
+            }
+
+        }
+
     }
 }
