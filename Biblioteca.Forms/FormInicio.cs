@@ -363,23 +363,28 @@ namespace Biblioteca.Forms
         private void button5_Click(object sender, EventArgs e)
         {
 
-            foreach (Cliente cliente in biblioteca.Clientes)
+            List<Cliente> clientes = biblioteca.Clientes;
+
+            if (!textBox1.Equals(null) & textBox1.Text != "" )
+            {
+                clientes = clientes.FindAll(x => x.Id == int.Parse(textBox1.Text));
+            }
+            if (!textBox2.Text.Equals(null) & textBox2.Text != "")
+            {
+                clientes = clientes.FindAll(x => (x.Nombre??"").ToLower() == textBox2.Text.ToLower());
+            }
+            if (!textBox3.Text.Equals(null) & textBox3.Text != "")
+            {
+                clientes = clientes.FindAll(x => (x.Apellido??"").ToLower() == textBox3.Text.ToLower());
+            }
+
+            checkedListBox1.Items.Clear();
+
+            foreach (Cliente cliente in clientes)
             {
                 checkedListBox1.Items.Add(cliente);
             }
 
-            if (!textBox1.Equals(null))
-            {
-                checkedListBox1.Items.Cast<Cliente>().Where(x => (x.Id == int.Parse(textBox1.Text)));
-            }
-            if (!textBox2.Text.Equals(null))
-            {
-                checkedListBox1.Items.Cast<Cliente>().Where(x => (x.Nombre.ToLower() == textBox2.Text.ToLower()));
-            }
-            if (!textBox3.Text.Equals(null))
-            {
-                checkedListBox1.Items.Cast<Cliente>().Where(x => (x.Apellido.ToLower() == textBox3.Text.ToLower()));
-            }
         }
 
         public BibliotecaNegocio Biblioteca
