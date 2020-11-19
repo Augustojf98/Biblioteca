@@ -12,7 +12,7 @@ using Biblioteca.Negocio;
 
 namespace Biblioteca.Forms
 {
-    public partial class FormAltaPrestamoLibro : Form
+    public partial class FormAltaPrestamo : Form
     {
         private BibliotecaNegocio biblioteca;
         private Libro _libro;
@@ -20,7 +20,7 @@ namespace Biblioteca.Forms
         private Ejemplar _ejemplar;
         private Cliente _cliente;
 
-        public FormAltaPrestamoLibro(BibliotecaNegocio bibliotecaNegocio)
+        public FormAltaPrestamo(BibliotecaNegocio bibliotecaNegocio)
         {
             InitializeComponent();
             this.biblioteca = bibliotecaNegocio;

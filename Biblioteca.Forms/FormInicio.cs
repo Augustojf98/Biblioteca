@@ -193,11 +193,18 @@ namespace Biblioteca.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FormGestionarPrestamo formGestionarPrestamo = new FormGestionarPrestamo(checkedListBox4.SelectedItem as Prestamo);
-            formGestionarPrestamo.Owner = this;
-            formGestionarPrestamo.Show();
-            this.Enabled = false;
-            formGestionarPrestamo.FormClosed += FormAltaPrestamo_FormClosed;
+            if (checkedListBox4.SelectedItems.Count == 1)
+            {
+                FormGestionarPrestamo formGestionarPrestamo = new FormGestionarPrestamo(checkedListBox4.SelectedItem as Prestamo, biblioteca);
+                formGestionarPrestamo.Owner = this;
+                formGestionarPrestamo.Show();
+                this.Enabled = false;
+                formGestionarPrestamo.FormClosed += FormAltaPrestamo_FormClosed;
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un solo prestamo...");
+            }
         }
 
         private void FormAltaPrestamo_FormClosed(object sender, FormClosedEventArgs e)

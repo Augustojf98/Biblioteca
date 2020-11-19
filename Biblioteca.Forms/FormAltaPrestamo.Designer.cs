@@ -1,6 +1,6 @@
 ﻿namespace Biblioteca.Forms
 {
-    partial class FormAltaPrestamoLibro
+    partial class FormAltaPrestamo
     {
         /// <summary>
         /// Required designer variable.
