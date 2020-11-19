@@ -328,7 +328,7 @@ namespace Biblioteca.Forms
             int id = int.Parse(textBox12.Text);
             Cliente cliente = comboBox3.SelectedValue as Cliente;
             Ejemplar ejemplar = comboBox2.SelectedValue as Ejemplar;
-            foreach (Prestamo prestamo in biblioteca.GetPrestamos())
+            foreach (Prestamo prestamo in biblioteca.Prestamos)
             {
                 checkedListBox4.Items.Add(prestamo);
             }
@@ -364,7 +364,26 @@ namespace Biblioteca.Forms
 
         private void button5_Click(object sender, EventArgs e)
         {
+            int id = int.Parse(textBox1.Text);
+            string nombre = textBox2.Text;
+            string apellido = textBox3.Text;
+            foreach (Cliente cliente in biblioteca.Clientes)
+            {
+                checkedListBox1.Items.Add(cliente);
+            }
 
+            if (!textBox1.Equals(null))
+            {
+                checkedListBox1.Items.Cast<Cliente>().Where(x => (x.Id == id));
+            }
+            if (!textBox2.Text.Equals(null))
+            {
+                checkedListBox1.Items.Cast<Cliente>().Where(x => (x.Nombre.ToLower() == nombre.ToLower()));
+            }
+            if (!textBox3.Text.Equals(null))
+            {
+                checkedListBox1.Items.Cast<Cliente>().Where(x => (x.Apellido.ToLower() == apellido.ToLower()));
+            }
         }
 
         public BibliotecaNegocio Biblioteca
@@ -379,5 +398,97 @@ namespace Biblioteca.Forms
             }
         }
 
+        private void textBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(textBox9.Text);
+            Libro libro = comboBox1.SelectedValue as Libro;
+            int precio = int.Parse(textBox9.Text);
+            foreach (Ejemplar ejemplar in biblioteca.Ejemplares)
+            {
+                checkedListBox3.Items.Add(ejemplar);
+            }
+
+            if (!textBox9.Equals(null))
+            {
+                checkedListBox3.Items.Cast<Ejemplar>().Where(x => (x.Id == id));
+            }
+            if (!comboBox3.SelectedValue.Equals(null))
+            {
+                checkedListBox3.Items.Cast<Ejemplar>().Where(x => (x.IdLibro == libro.Id));
+            }
+            if (!comboBox2.SelectedItem.Equals(null))
+            {
+                checkedListBox3.Items.Cast<Ejemplar>().Where(x => (x.Precio == precio));
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(textBox6.Text);
+            string nombre = textBox5.Text;
+            string autor = textBox4.Text;
+            foreach (Libro libro in biblioteca.Libros)
+            {
+                checkedListBox2.Items.Add(libro);
+            }
+
+            if (!textBox6.Equals(null))
+            {
+                checkedListBox2.Items.Cast<Libro>().Where(x => (x.Id == id));
+            }
+            if (!textBox5.Text.Equals(null))
+            {
+                checkedListBox2.Items.Cast<Libro>().Where(x => (x.Titulo.ToLower() == nombre.ToLower()));
+            }
+            if (!textBox4.Text.Equals(null))
+            {
+                checkedListBox2.Items.Cast<Libro>().Where(x => (x.Autor.ToLower() == autor.ToLower()));
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
