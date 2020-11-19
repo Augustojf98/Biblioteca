@@ -19,7 +19,7 @@ namespace Biblioteca.Entidades
         private int _plazo; 
         private DateTime _fechaAlta;
         private DateTime _fechaBaja;
-        private DateTime _fechaBajaReal;
+        private DateTime? _fechaBajaReal;
   
         [DataMember]
 
@@ -118,7 +118,7 @@ namespace Biblioteca.Entidades
 
         [DataMember]
 
-        public DateTime FechaBajaReal
+        public DateTime? FechaBajaReal
         {
             get
             {
@@ -139,7 +139,15 @@ namespace Biblioteca.Entidades
             this._plazo = plazo;
             this._fechaAlta = Convert.ToDateTime(fechaAlta);
             this._fechaBaja = Convert.ToDateTime(fechaBaja);
-            this._fechaBajaReal = Convert.ToDateTime(fechaBajaReal);
+            if (!fechaBajaReal.)
+            {
+                this._fechaBajaReal = Convert.ToDateTime(fechaBajaReal);
+            }
+            else
+            {
+                this._fechaBajaReal = null;
+            }
+            
         }
 
         public string NombreCompletoCliente

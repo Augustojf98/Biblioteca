@@ -63,37 +63,47 @@ namespace Biblioteca.Forms
             List<bool> ejemplarDisponible = new List<bool>();
             Libro =  comboBox1.SelectedItem as Libro;
             int copiasPrestadas = 0;
-            List<Ejemplar> lst = _biblioteca.BuscarEjemplaresByIdLibro(Libro.Id);
-            
-            foreach (Ejemplar ejemplar1 in lst)
+            try
             {
-                if (this.ListaPrestamos.Select(y => y.Id).ToList().Contains(ejemplar1.Id))
+                List<Ejemplar> lst = _biblioteca.BuscarEjemplaresByIdLibro(Libro.Id);
+                foreach (Ejemplar ejemplar1 in lst)
                 {
-                    foreach (Prestamo prestamo1 in ListaPrestamos)
+                    if (this.ListaPrestamos.Select(y => y.Id).ToList().Contains(ejemplar1.Id))
                     {
-                        if (prestamo1.IdEjemplar == ejemplar1.Id & prestamo1.FechaBajaReal.Equals(null))
+                        foreach (Prestamo prestamo1 in ListaPrestamos)
                         {
-                            copiasPrestadas+=1;
+                            if (prestamo1.IdEjemplar == ejemplar1.Id & prestamo1.FechaBajaReal.Equals(null))
+                            {
+                                copiasPrestadas += 1;
+                            }
                         }
-                    }                 
+                    }
+                    if (copiasPrestadas < (lst.IndexOf(ejemplar1) + 1))
+                    {
+                        MessageBox.Show(string.Format("Ejemplar disponible"));
+                        textBox4.Text = Libro.Autor;
+                        textBox5.Text = Libro.Edicion.ToString();
+                        textBox6.Text = Libro.Editorial;
+                        textBox3.Text = Libro.Paginas.ToString();
+                        textBox2.Text = Libro.Tema;
+                        comboBox2.Enabled = true;
+                        Ejemplar = ejemplar1;
+                        break;
+                    }
                 }
-                if (copiasPrestadas < (lst.IndexOf(ejemplar1) + 1))
+                if (copiasPrestadas == lst.Count)
                 {
-                    MessageBox.Show(string.Format("Ejemplar disponible"));
-                    textBox4.Text = Libro.Autor;
-                    textBox5.Text = Libro.Edicion.ToString();
-                    textBox6.Text = Libro.Editorial;
-                    textBox3.Text = Libro.Paginas.ToString();
-                    textBox2.Text = Libro.Tema;
-                    comboBox2.Enabled = true;
-                    break;
+                    MessageBox.Show(string.Format("No hay ejemplares disponibles del libro seleccionado..."));
+                    comboBox2.ResetText();
                 }
             }
-            if(copiasPrestadas == lst.Count)
+            catch (SinEjemplaresException ex)
             {
-                MessageBox.Show(string.Format("No hay ejemplares disponibles del libro seleccionado..."));
-                comboBox2.ResetText();
-            }       
+                MessageBox.Show(ex.Message);
+            }
+            
+            
+            
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -121,7 +131,7 @@ namespace Biblioteca.Forms
             textBox4.Enabled = false;
             textBox5.Enabled = false;
             textBox6.Enabled = false;
-            comboBox1.Enabled = false;
+            //comboBox1.Enabled = false;
             
         }
 
