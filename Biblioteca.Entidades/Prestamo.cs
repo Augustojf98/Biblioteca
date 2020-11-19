@@ -131,7 +131,7 @@ namespace Biblioteca.Entidades
             }
         }
         
-        public Prestamo(int id, int idCliente, int idEjemplar, int plazo, string fechaAlta, string fechaBaja, string fechaBajaReal)
+        public Prestamo(int id, int idCliente, int idEjemplar, int plazo, string fechaAlta, string fechaBaja)
         {
             this._id = id;
             this._idCliente = idCliente;
@@ -139,15 +139,16 @@ namespace Biblioteca.Entidades
             this._plazo = plazo;
             this._fechaAlta = Convert.ToDateTime(fechaAlta);
             this._fechaBaja = Convert.ToDateTime(fechaBaja);
-            if (!fechaBajaReal.)
+            this._fechaBajaReal = _fechaBaja;
+            /*if (string.isnullorempty(fechabajareal))
             {
-                this._fechaBajaReal = Convert.ToDateTime(fechaBajaReal);
+                this._fechabajareal = convert.todatetime(fechabajareal);
             }
             else
             {
-                this._fechaBajaReal = null;
-            }
-            
+                this._fechabajareal = null;
+            }*/
+
         }
 
         public string NombreCompletoCliente

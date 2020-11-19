@@ -303,7 +303,7 @@ namespace Biblioteca.Negocio
             List<Prestamo> prestamos = this.GetPrestamos();
             int idNuevoPrestamo = this.UltimoCodPrestamo() + 1;
 
-            Prestamo prestamo = new Prestamo(idNuevoPrestamo, idCliente, idEjemplar, plazo, fechaAlta.ToShortDateString(), fechaBaja.ToShortDateString(), string.Empty);
+            Prestamo prestamo = new Prestamo(idNuevoPrestamo, idCliente, idEjemplar, plazo, fechaAlta.ToShortDateString(), fechaBaja.ToShortDateString());
 
             foreach (Prestamo p in prestamos)
             {

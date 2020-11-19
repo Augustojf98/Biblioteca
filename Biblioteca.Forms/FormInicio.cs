@@ -101,6 +101,7 @@ namespace Biblioteca.Forms
         private void CargarClientes()
         {
             biblioteca.Clientes = biblioteca.GetClientes();
+            this.comboBox3.DataSource = biblioteca.Clientes;
         }
 
         private void CargarLibros()
@@ -111,6 +112,7 @@ namespace Biblioteca.Forms
         private void CargarEjemplares()
         {
             biblioteca.Ejemplares = biblioteca.GetEjemplares();
+            this.comboBox2.DataSource = biblioteca.Ejemplares;
         }
 
         private void CargarPrestamos()
@@ -327,15 +329,16 @@ namespace Biblioteca.Forms
         {
             List<Prestamo> prestamos = biblioteca.Prestamos;
 
-            if (!textBox12.Equals(null))
+            if (!(textBox12.Text == ""))
             {
                 prestamos = prestamos.FindAll(x => x.Id == int.Parse(textBox12.Text));
             }
-            if (!comboBox3.SelectedValue.Equals(null))
+            
+            if (!(comboBox3.Text == ""))
             {
                 prestamos = prestamos.FindAll(x => x.IdCliente == (comboBox3.SelectedValue as Cliente).Id);
             }
-            if (!comboBox2.SelectedValue.Equals(null))
+            if (!(comboBox2.Text == ""))
             {
                 prestamos = prestamos.FindAll(x => x.IdEjemplar == (comboBox2.SelectedValue as Ejemplar).Id);
             }
@@ -368,17 +371,17 @@ namespace Biblioteca.Forms
 
             List<Cliente> clientes = biblioteca.Clientes;
 
-            if (!textBox1.Equals(null) & textBox1.Text != "" )
+            if (!textBox1.Equals(null) || textBox1.Text != "" )
             {
                 clientes = clientes.FindAll(x => x.Id == int.Parse(textBox1.Text));
             }
-            if (!textBox2.Text.Equals(null) & textBox2.Text != "")
+            if (!textBox2.Text.Equals(null) || textBox2.Text != "")
             {
-                clientes = clientes.FindAll(x => (x.Nombre??"").ToLower() == textBox2.Text.ToLower());
+                clientes = clientes.FindAll(x => (x.Nombre??"").ToLower().Contains(textBox2.Text.ToLower()));
             }
-            if (!textBox3.Text.Equals(null) & textBox3.Text != "")
+            if (!textBox3.Text.Equals(null) || textBox3.Text != "")
             {
-                clientes = clientes.FindAll(x => (x.Apellido??"").ToLower() == textBox3.Text.ToLower());
+                clientes = clientes.FindAll(x => (x.Apellido??"").ToLower().Contains(textBox3.Text.ToLower()));
             }
 
             checkedListBox1.Items.Clear();
@@ -411,15 +414,15 @@ namespace Biblioteca.Forms
         {
             List<Ejemplar> ejemplares = biblioteca.Ejemplares;
 
-            if (!textBox9.Equals(null))
+            if (!(textBox9.Text == ""))
             {
                 ejemplares = ejemplares.FindAll(x => x.Id == int.Parse(textBox9.Text));
             }
-            if (!comboBox1.SelectedValue.Equals(null))
+            if (!(comboBox1.Text == ""))
             {
                 ejemplares = ejemplares.FindAll(x => x.IdLibro == (comboBox1.SelectedValue as Libro).Id);
             }
-            if (!textBox7.Equals(null))
+            if (!(textBox7.Text == ""))
             {
                 ejemplares = ejemplares.FindAll(x => x.Precio == int.Parse(textBox7.Text));
             }
@@ -437,17 +440,17 @@ namespace Biblioteca.Forms
 
             List<Libro> libros = biblioteca.Libros;
 
-            if (!textBox6.Equals(null))
+            if (!(textBox6.Text == ""))
             {
                 libros = libros.FindAll(x => x.Id == int.Parse(textBox6.Text));
             }
-            if (!textBox5.Text.Equals(null))
+            if (!(textBox5.Text == ""))
             {
-                libros = libros.FindAll(x => (x.Titulo ?? "").ToLower() == textBox5.Text.ToLower());
+                libros = libros.FindAll(x => (x.Titulo ?? "").ToLower().Contains(textBox5.Text.ToLower()));
             }
-            if (!textBox4.Text.Equals(null))
+            if (!(textBox4.Text == ""))
             {
-                libros = libros.FindAll(x => (x.Autor ?? "").ToLower() == textBox4.Text.ToLower());
+                libros = libros.FindAll(x => (x.Autor ?? "").ToLower().Contains(textBox4.Text.ToLower()));
             }
 
             checkedListBox2.Items.Clear();

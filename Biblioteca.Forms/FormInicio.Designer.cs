@@ -87,6 +87,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
             this.button10 = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tabPage5.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -613,6 +614,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.checkBox2);
             this.panel4.Controls.Add(this.comboBox3);
             this.panel4.Controls.Add(this.comboBox2);
             this.panel4.Controls.Add(this.label12);
@@ -631,7 +633,7 @@
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(145, 22);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.Size = new System.Drawing.Size(136, 21);
             this.comboBox3.TabIndex = 13;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
@@ -640,7 +642,7 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(287, 22);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.Size = new System.Drawing.Size(138, 21);
             this.comboBox2.TabIndex = 12;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -686,10 +688,10 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(447, 21);
+            this.button8.Location = new System.Drawing.Point(488, 21);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(86, 21);
+            this.button8.Size = new System.Drawing.Size(77, 21);
             this.button8.TabIndex = 8;
             this.button8.Text = "Buscar";
             this.button8.UseVisualStyleBackColor = true;
@@ -717,6 +719,20 @@
             this.button10.Text = "X";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(430, 25);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBox2.MaximumSize = new System.Drawing.Size(1110, 162);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(56, 17);
+            this.checkBox2.TabIndex = 14;
+            this.checkBox2.Text = "Activo";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // FormInicio
             // 
@@ -804,6 +820,7 @@
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
