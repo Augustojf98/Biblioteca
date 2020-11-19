@@ -107,6 +107,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(208, 20);
             this.textBox5.TabIndex = 18;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // comboBox1
             // 

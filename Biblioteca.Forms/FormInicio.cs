@@ -193,7 +193,7 @@ namespace Biblioteca.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
-            FormAltaPrestamo formAltaPrestamo = new FormAltaPrestamo(biblioteca);
+            FormAltaPrestamoLibro formAltaPrestamo = new FormAltaPrestamoLibro(biblioteca);
             formAltaPrestamo.Owner = this;
             formAltaPrestamo.Show();
             this.Enabled = false;
@@ -274,7 +274,95 @@ namespace Biblioteca.Forms
 
         private void button15_Click(object sender, EventArgs e)
         {
-            var altaPrestamo = new FormAltaPrestamo(biblioteca);
+            FormAltaPrestamoLibro altaPrestamo = new FormAltaPrestamoLibro(biblioteca);
+            altaPrestamo.Owner = this;
+            altaPrestamo.Show();
+            this.Enabled = false;
+            altaPrestamo.FormClosed += FormAltaEjemplar_FormClosed;
+        }
+
+        private void FormInicio_Load(object sender, EventArgs e)
+        {
+            List<Prestamo> lstPrestamos = biblioteca.GetPrestamos();
+            List<Ejemplar> lstEjemplares = biblioteca.GetEjemplares();
+            List<Libro> lstLibros = biblioteca.GetLibros();
+            List<Cliente> lstClientes = biblioteca.GetClientes();
+            foreach (Prestamo prestamo in lstPrestamos)
+            {
+                checkedListBox4.Items.Add(prestamo);
+            }
+            foreach (Ejemplar ejemplar in lstEjemplares)
+            {
+                checkedListBox3.Items.Add(ejemplar);
+            }
+            foreach (Libro libro in lstLibros)
+            {
+                checkedListBox2.Items.Add(libro);
+            }
+            foreach(Cliente cliente in lstClientes)
+            {
+                checkedListBox1.Items.Add(cliente);
+            }
+            foreach(Cliente cliente in lstClientes)
+            {
+                comboBox3.Items.Add(cliente);
+            }
+            foreach (Ejemplar ejemplar in lstEjemplares)
+            {
+                comboBox2.Items.Add(ejemplar);
+            }
+        }
+
+        private void checkedListBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox11_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(textBox12.Text);
+            Cliente cliente = comboBox3.SelectedValue as Cliente;
+            Ejemplar ejemplar = comboBox2.SelectedValue as Ejemplar;
+
+            checkedListBox4.Items.Cast<Prestamo>().Where(x => (x.Id == id) & (x.IdCliente == cliente.Id) & (x.IdEjemplar == ejemplar.Id));
+            textBox12.ResetText();
+            comboBox3.ResetText();
+            comboBox2.ResetText();
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

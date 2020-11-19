@@ -44,5 +44,10 @@ namespace Biblioteca.Forms
                 this.Enabled = false;
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

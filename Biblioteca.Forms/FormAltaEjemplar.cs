@@ -69,5 +69,10 @@ namespace Biblioteca.Forms
             this.Owner.Enabled = true;
             this.Close();
         }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
