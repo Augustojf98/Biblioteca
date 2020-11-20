@@ -393,11 +393,11 @@ namespace Biblioteca.Forms
             {
                 clientes = clientes.FindAll(x => x.Id == int.Parse(textBox1.Text));
             }
-            if (!textBox2.Text.Equals(null) || textBox2.Text != "")
+            if (textBox2.Text != "")
             {
                 clientes = clientes.FindAll(x => (x.Nombre??"").ToLower().Contains(textBox2.Text.ToLower()));
             }
-            if (!textBox3.Text.Equals(null) || textBox3.Text != "")
+            if (textBox3.Text != "")
             {
                 clientes = clientes.FindAll(x => (x.Apellido??"").ToLower().Contains(textBox3.Text.ToLower()));
             }

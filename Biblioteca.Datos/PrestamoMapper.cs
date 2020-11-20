@@ -79,7 +79,7 @@ namespace Biblioteca.Datos
             n.Add("idEjemplar", prestamo.IdEjemplar.ToString());
             n.Add("idCliente", prestamo.IdCliente.ToString());
             n.Add("Usuario", usuarioUtilizado);
-            n.Add("Abierto", prestamo.EstaAbierto().ToString());
+            n.Add("Abierto", prestamo.EstaAbierto.ToString());
             n.Add("FechaPrestamo", prestamo.FechaAlta.ToString());
             n.Add("FechaDevolucionTentativa", prestamo.FechaBaja.ToString()); // INT
             n.Add("FechaDevolucionReal", prestamo.FechaBajaReal.ToString());

@@ -15,23 +15,58 @@ namespace Biblioteca.Forms
     public partial class FormAltaPrestamo : Form
     {
         private Libro _libro;
-        private Ejemplar _ejemplar;
         private Cliente _cliente;
-        List<Prestamo> _listaPrestamos;
+        private Ejemplar _ejemplar;
         private BibliotecaNegocio _biblioteca;
 
         public FormAltaPrestamo(BibliotecaNegocio biblioteca)
         {
             InitializeComponent();
             _biblioteca = biblioteca;
-            this.ListaPrestamos = _biblioteca.GetPrestamos();
+            try
+            {
+                foreach (Libro libro in _biblioteca.Libros)
+                {
+                    comboBox1.Items.Add(libro);
+                }
+                foreach (Cliente cliente in _biblioteca.Clientes)
+                {
+                    if (cliente.Activo)
+                    {
+                        comboBox2.Items.Add(cliente);
+                    }
+
+                }
+                textBox2.Enabled = false;
+                textBox3.Enabled = false;
+                textBox4.Enabled = false;
+                textBox5.Enabled = false;
+                textBox6.Enabled = false;
+                //comboBox1.Enabled = false;
+            }
+            catch (SinClientesException ex)
+            {
+                FormException formException = new FormException("No hay clientes", ex.Message);
+                formException.Owner = this;
+                formException.Show();
+                this.Enabled = false;
+            }
+            catch (SinLibrosException ex)
+            {
+                FormException formException = new FormException("No hay libros", ex.Message);
+                formException.Owner = this;
+                formException.Show();
+                this.Enabled = false;
+            }
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (!comboBox1.Equals(null) & !comboBox2.Equals(null) & numericUpDown1.Value > 0 & dateTimePicker1.Value > DateTime.Now)
             {
-                _biblioteca.IngresarPrestamo(Cliente.Id, Ejemplar.Id, Decimal.ToInt32(numericUpDown1.Value), DateTime.Now, dateTimePicker1.Value);
+                _biblioteca.IngresarPrestamo(_cliente.Id, _ejemplar.Id, Decimal.ToInt32(numericUpDown1.Value), DateTime.Now, dateTimePicker1.Value);
                 MessageBox.Show("Prestamo creado...");
                 this.Owner.Enabled = true;
                 this.Close();
@@ -51,16 +86,16 @@ namespace Biblioteca.Forms
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<bool> ejemplarDisponible = new List<bool>();
-            Libro =  comboBox1.SelectedItem as Libro;
+            _libro =  comboBox1.SelectedItem as Libro;
             int copiasPrestadas = 0;
             try
             {
-                List<Ejemplar> lst = _biblioteca.BuscarEjemplaresByIdLibro(Libro.Id);
+                List<Ejemplar> lst = _biblioteca.BuscarEjemplaresByIdLibro(_libro.Id);
                 foreach (Ejemplar ejemplar1 in lst)
                 {
-                    if (this.ListaPrestamos.Select(y => y.Id).ToList().Contains(ejemplar1.Id))
+                    if (_biblioteca.Prestamos.Select(y => y.Id).ToList().Contains(ejemplar1.Id))
                     {
-                        foreach (Prestamo prestamo1 in ListaPrestamos)
+                        foreach (Prestamo prestamo1 in _biblioteca.Prestamos)
                         {
                             if (prestamo1.IdEjemplar == ejemplar1.Id & prestamo1.FechaBajaReal.Equals(null))
                             {
@@ -71,13 +106,13 @@ namespace Biblioteca.Forms
                     if (copiasPrestadas < (lst.IndexOf(ejemplar1) + 1))
                     {
                         MessageBox.Show(string.Format("Ejemplar disponible"));
-                        textBox4.Text = Libro.Autor;
-                        textBox5.Text = Libro.Edicion.ToString();
-                        textBox6.Text = Libro.Editorial;
-                        textBox3.Text = Libro.Paginas.ToString();
-                        textBox2.Text = Libro.Tema;
+                        textBox4.Text = _libro.Autor;
+                        textBox5.Text = _libro.Edicion.ToString();
+                        textBox6.Text = _libro.Editorial;
+                        textBox3.Text = _libro.Paginas.ToString();
+                        textBox2.Text = _libro.Tema;
                         comboBox2.Enabled = true;
-                        Ejemplar = ejemplar1;
+                        _ejemplar = ejemplar1;
                         break;
                     }
                 }
@@ -97,79 +132,14 @@ namespace Biblioteca.Forms
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Cliente = comboBox2.SelectedItem as Cliente;
+            _cliente = comboBox2.SelectedItem as Cliente;
         }
 
         private void FormAltaPrestamo_Load(object sender, EventArgs e)
         {
-            List<Libro> lstLibros = _biblioteca.GetLibros();
-            List<Cliente> lstCliente = _biblioteca.GetClientes();
-            foreach (Libro libro in lstLibros)
-            {
-                comboBox1.Items.Add(libro);
-            }
-            foreach (Cliente cliente in lstCliente)
-            {
-                if (cliente.Activo)
-                {
-                    comboBox2.Items.Add(cliente);
-                }
-                
-            }
-            textBox2.Enabled = false;
-            textBox3.Enabled = false;
-            textBox4.Enabled = false;
-            textBox5.Enabled = false;
-            textBox6.Enabled = false;
-            //comboBox1.Enabled = false;
+            
             
         }
-
-        public Ejemplar Ejemplar
-        {
-            get
-            {
-                return _ejemplar;
-            }
-            set
-            {
-                _ejemplar = value;
-            }
-        }
-        public List<Prestamo> ListaPrestamos
-        {
-            get
-            {
-                return _listaPrestamos;
-            }
-            set
-            {
-                _listaPrestamos = value;
-            }
-        }
-
-        public Libro Libro
-        {
-            get
-            {
-                return _libro;
-            }
-            set
-            {
-                _libro = value;
-            }
-        }
-
-        public Cliente Cliente
-        {
-            get
-            {
-                return _cliente;
-            }
-            set
-            {
-                _cliente = value;
-            }
-        }
+         
     }
 }

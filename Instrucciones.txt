@@ -1,3 +1,5 @@
-- Para calcular si el ejemplar está prestado o no, nos fijamos si la fecha de devolución tentativa es igual a la real. Caso contrario lo consideramos devuelto (No podemos almacenar un bool de si está o no prestado)
+- Para calcular si el ejemplar está prestado o no, nos fijamos si la fecha de devolución real es igual al "01/01/1800". Caso contrario lo consideramos devuelto (No podemos almacenar un bool de si está o no prestado)
 
 - Hay que desactivar el antivirus para que funcione el "Exportar", dado que va a generar un archivo csv con la información que figure en ese momento la lista (con filtros aplicados)
+
+- Hay un problema en el servidor (no lo podemos debuggear dado que no tenemos acceso), que guarda todas las fechas como "01/01/0001", incluso cuando mandamos correctamente el objeto en el formato requerido.

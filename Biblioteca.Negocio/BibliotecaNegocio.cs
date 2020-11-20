@@ -223,6 +223,14 @@ namespace Biblioteca.Negocio
 
         public int EliminarCliente(Cliente cliente)
         {
+            foreach(Prestamo prestamo in _prestamos)
+            {
+                if (prestamo.IdCliente == cliente.Id)
+                {
+                    throw new Exception("El cliente tiene préstamos vigentes");
+                }
+            }
+            
             TransactionResult result = clienteMapper.Delete(cliente);
 
             if (result.IsOk)
@@ -240,6 +248,15 @@ namespace Biblioteca.Negocio
         {
             List<Cliente> clientes = this.GetClientes();
             int idNuevoCliente = this.UltimoCodCliente() + 1;
+
+            if(fechaNacimiento.Date >= DateTime.Now.Date)
+            {
+                throw new Exception("La fecha de nacimiento no puede ser mayor a la actual");
+            }
+            if(int.TryParse(telefono, out int telefono2) == false)
+            {
+                throw new Exception("El teléfono debe ser un valor numérico");
+            }
 
             Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToShortDateString(), fechaNacimiento.ToShortDateString(), activo, idNuevoCliente, nombre, apellido, direccion, telefono, mail);
 
@@ -322,6 +339,7 @@ namespace Biblioteca.Negocio
 
             if (result.IsOk)
             {
+                prestamo.NombreEjemplar = this.BuscarEjemplarById(prestamo.IdEjemplar).NombreLibro;
                 this._prestamos.Add(prestamo);
                 return result.Id;
             }

@@ -35,15 +35,19 @@ namespace Biblioteca.Entidades
             }
         }
 
-        public bool EstaAbierto()
+        [DataMember]
+        public bool EstaAbierto
         {
-            if(this._fechaBajaReal == null)
+            get
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                if (this._fechaBajaReal == Convert.ToDateTime("01-01-1800"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 

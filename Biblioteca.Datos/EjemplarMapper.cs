@@ -73,7 +73,7 @@ namespace Biblioteca.Datos
             NameValueCollection n = new NameValueCollection();
             n.Add("id", ejemplar.Id.ToString()); // LONG 
             n.Add("Usuario", usuarioUtilizado);
-            n.Add("id_Libro", ejemplar.IdLibro.ToString());
+            n.Add("idLibro", ejemplar.IdLibro.ToString());
             n.Add("Observaciones", ejemplar.Observaciones);
             n.Add("Precio", ejemplar.Precio.ToString()); // INT
             n.Add("FechaAlta", ejemplar.FechaAlta.ToString());
