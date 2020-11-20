@@ -378,8 +378,8 @@ namespace Biblioteca.Forms
         {
 
             List<Cliente> clientes = biblioteca.Clientes;
-
-            if (!textBox1.Equals(null) || textBox1.Text != "" )
+            
+            if (!(textBox1.Text == ""))
             {
                 clientes = clientes.FindAll(x => x.Id == int.Parse(textBox1.Text));
             }

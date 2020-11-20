@@ -245,11 +245,11 @@ namespace Biblioteca.Negocio
 
             foreach (Cliente c in clientes)
             {
-                if(c.Nombre.ToUpper() == cliente.Nombre.ToUpper() && c.Apellido.ToUpper() == cliente.Apellido.ToUpper())
+                if(c.Nombre?.ToUpper() == cliente.Nombre?.ToUpper() && c.Apellido?.ToUpper() == cliente.Apellido?.ToUpper())
                 {
                     throw new Exception(string.Format("Ya existe un cliente llamado \"{0} {1}\"", nombre, apellido));
                 }
-                if (c.Telefono == cliente.Telefono || c.Email.ToUpper() == cliente.Email.ToUpper())
+                if (c.Telefono == cliente.Telefono || c.Email?.ToUpper() == cliente.Email?.ToUpper())
                 {
                     throw new Exception(string.Format("El email \"{0}\" o el teléfono \"{1}\" se encuentran ya registrados.", mail, telefono));
                 }
