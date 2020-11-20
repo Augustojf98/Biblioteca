@@ -16,6 +16,10 @@ namespace Biblioteca.Entidades
         private string _observaciones;
         private double _precio;
         private DateTime _fechaAlta;
+        private bool _prestado;
+        
+        
+
       
 
         [DataMember]
@@ -94,6 +98,18 @@ namespace Biblioteca.Entidades
             this._observaciones = observaciones;
             this._precio = precio;
             this._fechaAlta = Convert.ToDateTime(fechaAlta);
+            this._prestado = false; 
+        }
+        public bool Prestado
+        {
+            get
+            {
+                return this._prestado; 
+            }
+            set
+            {
+                this._prestado = value; 
+            }
         }
 
         public string NombreLibro

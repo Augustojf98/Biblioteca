@@ -118,6 +118,14 @@ namespace Biblioteca.Forms
         private void CargarPrestamos()
         {
             biblioteca.Prestamos = biblioteca.GetPrestamos();
+            foreach(Prestamo prestamo in biblioteca.Prestamos)
+            {
+                if (prestamo.FechaBaja == prestamo.FechaBajaReal)
+                {
+                    Ejemplar ejemplar = biblioteca.BuscarEjemplarById(prestamo.IdEjemplar);
+                    ejemplar.Prestado = true; 
+                }
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
