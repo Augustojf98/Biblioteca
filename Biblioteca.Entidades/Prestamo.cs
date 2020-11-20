@@ -19,7 +19,7 @@ namespace Biblioteca.Entidades
         private int _plazo; 
         private DateTime _fechaAlta;
         private DateTime _fechaBaja;
-        private DateTime? _fechaBajaReal;
+        private DateTime _fechaBajaReal;
   
         [DataMember]
 
@@ -118,7 +118,7 @@ namespace Biblioteca.Entidades
 
         [DataMember]
 
-        public DateTime? FechaBajaReal
+        public DateTime FechaBajaReal
         {
             get
             {

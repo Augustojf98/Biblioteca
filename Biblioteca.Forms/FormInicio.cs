@@ -205,7 +205,7 @@ namespace Biblioteca.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (checkedListBox4.SelectedItems.Count == 1)
+            if (checkedListBox4.CheckedItems.Count == 1)
             {
                 FormGestionarPrestamo formGestionarPrestamo = new FormGestionarPrestamo(checkedListBox4.SelectedItem as Prestamo, biblioteca);
                 formGestionarPrestamo.Owner = this;
