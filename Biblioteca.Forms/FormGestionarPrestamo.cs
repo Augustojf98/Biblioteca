@@ -20,6 +20,10 @@ namespace Biblioteca.Forms
         public FormGestionarPrestamo(Prestamo prestamoOrigen, BibliotecaNegocio bibliotecaNegocio)
         {
             InitializeComponent();
+
+            biblioteca = bibliotecaNegocio;
+            prestamo = prestamoOrigen;
+
             if (!prestamo.FechaBajaReal.Equals(null))
             {
                 dateTimePicker2.Enabled = false;
@@ -32,8 +36,6 @@ namespace Biblioteca.Forms
             textBox5.Text = prestamo.Plazo.ToString();
             dateTimePicker1.Value = prestamo.FechaAlta;
             dateTimePicker3.Value = prestamo.FechaBaja;
-            biblioteca = bibliotecaNegocio;
-            prestamo = prestamoOrigen;
 
 
             
