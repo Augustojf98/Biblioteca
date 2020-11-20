@@ -23,6 +23,8 @@ namespace Biblioteca.Forms
         {
             InitializeComponent();
             biblioteca = new BibliotecaNegocio();
+            this.Text = "Gestión de Biblioteca";
+            this.label13.Text = "Bienvenido a la Biblioteca General Jeremías Springfield";
             this.CargaInicial();
             this.CargarArrays();
             this.comboBox1.DataSource = biblioteca.GetLibros();
