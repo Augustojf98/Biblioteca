@@ -139,15 +139,7 @@ namespace Biblioteca.Entidades
             this._plazo = plazo;
             this._fechaAlta = Convert.ToDateTime(fechaAlta);
             this._fechaBaja = Convert.ToDateTime(fechaBaja);
-            this._fechaBajaReal = _fechaBaja;
-            /*if (string.isnullorempty(fechabajareal))
-            {
-                this._fechabajareal = convert.todatetime(fechabajareal);
-            }
-            else
-            {
-                this._fechabajareal = null;
-            }*/
+            this._fechaBajaReal = Convert.ToDateTime("01-01-1800");
 
         }
 

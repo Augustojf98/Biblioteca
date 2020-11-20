@@ -303,6 +303,11 @@ namespace Biblioteca.Negocio
             List<Prestamo> prestamos = this.GetPrestamos();
             int idNuevoPrestamo = this.UltimoCodPrestamo() + 1;
 
+            if(fechaBaja < fechaAlta)
+            {
+                throw new Exception("Fecha baja no puede ser menor a fecha alta...");
+            }
+
             Prestamo prestamo = new Prestamo(idNuevoPrestamo, idCliente, idEjemplar, plazo, fechaAlta.ToShortDateString(), fechaBaja.ToShortDateString());
 
             foreach (Prestamo p in prestamos)
@@ -411,6 +416,11 @@ namespace Biblioteca.Negocio
 
         public int ActualizarPrestamo(Prestamo prestamo)
         {
+            if (prestamo.FechaBaja < prestamo.FechaAlta)
+            {
+                throw new Exception("Fecha baja no puede ser menor a fecha alta...");
+            }
+
             TransactionResult result = prestamoMapper.Put(prestamo);
 
             if (result.IsOk)

@@ -26,11 +26,12 @@ namespace Biblioteca.Forms
 
             textBox1.Text = prestamo.Id.ToString();
             textBox4.Text = prestamo.IdCliente.ToString();
-            textBox3.Text = prestamo.NombreEjemplar;
-            textBox2.Text = prestamo.NombreCompletoCliente;
+            textBox2.Text = prestamo.NombreEjemplar;
+            textBox3.Text = prestamo.NombreCompletoCliente;
             textBox5.Text = prestamo.Plazo.ToString();
-            dateTimePicker1.Value = prestamo.FechaAlta;
-            dateTimePicker3.Value = prestamo.FechaBaja;
+            textBox6.Text = prestamo.FechaAlta.ToShortDateString();
+            textBox7.Text = prestamo.FechaBaja.ToShortDateString();
+            textBox8.Text = prestamo.FechaBajaReal.ToShortDateString();
 
 
             
@@ -44,21 +45,32 @@ namespace Biblioteca.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dateTimePicker2.Text != "")
+            try
             {
-                MessageBox.Show("El ejemplar ya fue devuelto");
+                if (dateTimePicker2.Text != "")
+                {
+                    MessageBox.Show("El ejemplar ya fue devuelto");
+                }
+                else if (DateTime.Now <= dateTimePicker2.Value)
+                {
+                    this.biblioteca.ActualizarPrestamo(prestamo);
+                    MessageBox.Show("Prestamo modificado...");
+                    this.Owner.Enabled = true;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("La fecha de devolucion debe ser mayor a la fecha actual");
+                }
             }
-            else if (dateTimePicker2.Value > DateTime.Now)
+            catch (Exception d)
             {
-                this.biblioteca.ActualizarPrestamo(prestamo);
-                MessageBox.Show("Prestamo modificado...");
-                this.Owner.Enabled = true;
-                this.Close();
+                FormException formException = new FormException("Error en las fechas ingresadas", d.Message);
+                formException.Owner = this;
+                formException.Show();
+                this.Enabled = false;
             }
-            else
-            {
-                MessageBox.Show("La fecha de devolucion debe ser mayor a la fecha actual");
-            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -67,6 +79,26 @@ namespace Biblioteca.Forms
             MessageBox.Show("Prestamo eliminado...");
             this.Owner.Enabled = true;
             this.Close();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
