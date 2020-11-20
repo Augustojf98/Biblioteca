@@ -54,7 +54,7 @@ namespace Biblioteca.Forms
                 else if (DateTime.Now <= dateTimePicker2.Value)
                 {
                     this.biblioteca.ActualizarPrestamo(prestamo);
-                    MessageBox.Show("Prestamo modificado...");
+                    MessageBox.Show("Prestamo modificado");
                     this.Owner.Enabled = true;
                     this.Close();
                 }
@@ -76,7 +76,7 @@ namespace Biblioteca.Forms
         private void button3_Click(object sender, EventArgs e)
         {
             this.biblioteca.EliminarPrestamo(prestamo);
-            MessageBox.Show("Prestamo eliminado...");
+            MessageBox.Show("Prestamo eliminado");
             this.Owner.Enabled = true;
             this.Close();
         }

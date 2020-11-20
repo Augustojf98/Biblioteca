@@ -96,15 +96,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAltaCliente.resx">
       <DependentUpon>FormAltaCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAltaEjemplar.resx">
       <DependentUpon>FormAltaEjemplar.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAltaLibro.resx">
       <DependentUpon>FormAltaLibro.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAltaPrestamo.resx">
       <DependentUpon>FormAltaPrestamo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormException.resx">
       <DependentUpon>FormException.cs</DependentUpon>

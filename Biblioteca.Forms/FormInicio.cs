@@ -38,6 +38,7 @@ namespace Biblioteca.Forms
 
         public void CargarArrays()
         {
+            //Llenamos las listas con los datos de cache
             if(biblioteca.Clientes.Count > 0)
             {
                 this.checkedListBox1.Items.Clear();
@@ -102,6 +103,7 @@ namespace Biblioteca.Forms
 
         private void CargaInicial()
         {
+            //Carga datos en cache
             this.CargarClientes();
             this.CargarLibros();
             this.CargarEjemplares();
@@ -110,6 +112,7 @@ namespace Biblioteca.Forms
 
         private void CargarClientes()
         {
+            comboBox3.DataSource = null;
             biblioteca.Clientes = biblioteca.GetClientes();
             this.comboBox3.DataSource = biblioteca.Clientes;
         }
@@ -121,6 +124,7 @@ namespace Biblioteca.Forms
 
         private void CargarEjemplares()
         {
+            comboBox2.DataSource = null;
             biblioteca.Ejemplares = biblioteca.GetEjemplares();
             this.comboBox2.DataSource = biblioteca.Ejemplares;
         }
@@ -130,7 +134,7 @@ namespace Biblioteca.Forms
             biblioteca.Prestamos = biblioteca.GetPrestamos();
             foreach(Prestamo prestamo in biblioteca.Prestamos)
             {
-                if (prestamo.FechaBaja == prestamo.FechaBajaReal)
+                if (prestamo.EstaAbierto == true)
                 {
                     Ejemplar ejemplar = biblioteca.BuscarEjemplarById(prestamo.IdEjemplar);
                     ejemplar.Prestado = true; 
@@ -223,7 +227,7 @@ namespace Biblioteca.Forms
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un solo prestamo...");
+                MessageBox.Show("Debe seleccionar un solo prestamo");
             }
         }
 
@@ -234,40 +238,47 @@ namespace Biblioteca.Forms
 
         private void ExportFile(string tipoExport, List<Cliente> clientes, List<Libro> libros, List<Ejemplar> ejemplares, List<Prestamo> prestamos)
         {
-            List<string> lista = new List<string>();
+            try
+            {
+                List<string> lista = new List<string>();
 
-            if(tipoExport == "Clientes")
-            {
-                foreach(Cliente cliente in clientes)
+                if (tipoExport == "Clientes")
                 {
-                    lista.Add(cliente.ToString());
+                    foreach (Cliente cliente in clientes)
+                    {
+                        lista.Add(cliente.ToString());
+                    }
+                }
+                if (tipoExport == "Libros")
+                {
+                    foreach (Libro libro in libros)
+                    {
+                        lista.Add(libro.ToString());
+                    }
+                }
+                if (tipoExport == "Ejemplares")
+                {
+                    foreach (Ejemplar ejemplar in ejemplares)
+                    {
+                        lista.Add(ejemplar.ToString());
+                    }
+                }
+                if (tipoExport == "Prestamos")
+                {
+                    foreach (Prestamo prestamo in prestamos)
+                    {
+                        lista.Add(prestamo.ToString());
+                    }
+                }
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, string.Format("Export{0}.csv", tipoExport))))
+                {
+                    foreach (string line in lista)
+                        outputFile.WriteLine(line);
                 }
             }
-            if (tipoExport == "Libros")
+            catch
             {
-                foreach (Libro libro in libros)
-                {
-                    lista.Add(libro.ToString());
-                }
-            }
-            if (tipoExport == "Ejemplares")
-            {
-                foreach (Ejemplar ejemplar in ejemplares)
-                {
-                    lista.Add(ejemplar.ToString());
-                }
-            }
-            if (tipoExport == "Prestamos")
-            {
-                foreach (Prestamo prestamo in prestamos)
-                {
-                    lista.Add(prestamo.ToString());
-                }
-            }
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, string.Format("Export{0}.csv", tipoExport))))
-            {
-                foreach (string line in lista)
-                    outputFile.WriteLine(line);
+                MessageBox.Show("No se ha podido exportar, intente nuevamente.");
             }
         }
 
@@ -517,6 +528,13 @@ namespace Biblioteca.Forms
         private void textBox7_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            //Refrescamos con datos del servidor
+            this.CargaInicial();
+            this.CargarArrays();
         }
     }
 }

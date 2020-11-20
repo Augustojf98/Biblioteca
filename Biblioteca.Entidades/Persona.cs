@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Biblioteca.Entidades
 {
     [DataContract]
-    public class Persona
+    public abstract class Persona
     {
         protected int _dni;
         protected string _nombre;
@@ -18,6 +18,7 @@ namespace Biblioteca.Entidades
         protected string _email;
         protected DateTime _fechaNacimiento;
 
+        [DataMember]
         public int DNI
         {
             get
@@ -107,6 +108,9 @@ namespace Biblioteca.Entidades
                 this._fechaNacimiento = value;
             }
         }
+
+
+        public abstract override string ToString();
 
 
     }

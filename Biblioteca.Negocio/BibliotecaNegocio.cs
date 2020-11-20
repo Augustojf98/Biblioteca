@@ -244,7 +244,7 @@ namespace Biblioteca.Negocio
             }
         }
 
-        public int IngresarCliente(string nombre, string apellido, DateTime fechaNacimiento, string direccion, string telefono, string mail, bool activo)
+        public int IngresarCliente(string nombre, string apellido, DateTime fechaNacimiento, string direccion, string telefono, string mail, bool activo, int dni)
         {
             List<Cliente> clientes = this.GetClientes();
             int idNuevoCliente = this.UltimoCodCliente() + 1;
@@ -257,8 +257,12 @@ namespace Biblioteca.Negocio
             {
                 throw new Exception("El teléfono debe ser un valor numérico");
             }
+            if(string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(apellido) || string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(mail) || string.IsNullOrEmpty(direccion))
+            {
+                throw new Exception("Hay campos sin completar");
+            }
 
-            Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToShortDateString(), fechaNacimiento.ToShortDateString(), activo, idNuevoCliente, nombre, apellido, direccion, telefono, mail);
+            Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToShortDateString(), fechaNacimiento.ToShortDateString(), activo,dni, nombre, apellido, direccion, telefono, mail);
 
             foreach (Cliente c in clientes)
             {
@@ -291,6 +295,11 @@ namespace Biblioteca.Negocio
             List<Libro> libros = this.GetLibros();
             int idNuevoLibro = this.UltimoCodLibro() + 1;
 
+            if (string.IsNullOrEmpty(titulo) || string.IsNullOrEmpty(autor) || string.IsNullOrEmpty(editorial) || string.IsNullOrEmpty(tema))
+            {
+                throw new Exception("Hay campos sin completar");
+            }
+
             Libro libro = new Libro(idNuevoLibro, titulo, autor, edicion, editorial, paginas, tema);
 
             foreach (Libro l in libros)
@@ -320,7 +329,12 @@ namespace Biblioteca.Negocio
             List<Prestamo> prestamos = this.GetPrestamos();
             int idNuevoPrestamo = this.UltimoCodPrestamo() + 1;
 
-            if(fechaBaja < fechaAlta)
+            if (idCliente == 0 || idEjemplar == 0 || fechaAlta == null || fechaBaja == null)
+            {
+                throw new Exception("Hay campos sin completar");
+            }
+
+            if (fechaBaja < fechaAlta)
             {
                 throw new Exception("Fecha baja no puede ser menor a fecha alta...");
             }

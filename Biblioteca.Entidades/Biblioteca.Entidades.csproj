@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cliente.cs" />
+    <Compile Include="DatoGenerico.cs" />
     <Compile Include="Ejemplar.cs" />
     <Compile Include="Excepciones.cs" />
     <Compile Include="Libro.cs" />

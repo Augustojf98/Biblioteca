@@ -126,7 +126,7 @@ namespace Biblioteca.Entidades
 
         public override string ToString()
         {
-            return string.Format("{0} | {1} | $ {2} | {3}", _nombreLibro?.ToUpper(), _observaciones, _precio, _fechaAlta);
+            return string.Format("Titulo: {0} | {1} | $ {2} | Fecha Alta: {3}", _nombreLibro?.ToUpper(), _observaciones, _precio, _fechaAlta);
         }
     }
 

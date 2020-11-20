@@ -173,7 +173,7 @@ namespace Biblioteca.Entidades
 
         public override string ToString()
         {
-            return string.Format("{0} - {1} - {2} - {3} - {4}", _idCliente, _plazo, /*_idEjemplar*/ _nombreEjemplar, _fechaAlta, _fechaBaja);
+            return string.Format("Cliente: {0} | Plazo: {1} días | Titulo: {2} | Fecha Alta: {3} | Fecha Baja: {4}", _idCliente, _plazo, /*_idEjemplar*/ _nombreEjemplar, _fechaAlta, _fechaBaja);
         }
 
 
