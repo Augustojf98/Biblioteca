@@ -40,6 +40,7 @@ namespace Biblioteca.Forms
         {
             if(biblioteca.Clientes.Count > 0)
             {
+                this.checkedListBox1.Items.Clear();
                 this.checkedListBox1.Enabled = true;
                 foreach (Cliente cliente in biblioteca.Clientes)
                 {
@@ -48,11 +49,13 @@ namespace Biblioteca.Forms
             }
             else
             {
+                this.checkedListBox1.Items.Clear();
                 this.checkedListBox1.Items.Add("No hay clientes guardados");
                 this.checkedListBox1.Enabled = false;
             }
             if (biblioteca.Libros.Count > 0)
             {
+                this.checkedListBox2.Items.Clear();
                 this.checkedListBox2.Enabled = true;
                 foreach (Libro libro in biblioteca.Libros)
                 {
@@ -61,11 +64,13 @@ namespace Biblioteca.Forms
             }
             else
             {
+                this.checkedListBox2.Items.Clear();
                 this.checkedListBox2.Items.Add("No hay libros guardados");
                 this.checkedListBox2.Enabled = false;
             }
             if (biblioteca.Ejemplares.Count > 0)
             {
+                this.checkedListBox3.Items.Clear();
                 this.checkedListBox3.Enabled = true;
                 foreach (Ejemplar ejemplar in biblioteca.Ejemplares)
                 {
@@ -74,11 +79,13 @@ namespace Biblioteca.Forms
             }
             else
             {
+                this.checkedListBox3.Items.Clear();
                 this.checkedListBox3.Items.Add("No hay ejemplares guardados");
                 this.checkedListBox3.Enabled = false;
             }
             if (biblioteca.Prestamos.Count > 0)
             {
+                this.checkedListBox4.Items.Clear();
                 this.checkedListBox4.Enabled = true;
                 foreach (Prestamo prestamo in biblioteca.Prestamos)
                 {
@@ -87,6 +94,7 @@ namespace Biblioteca.Forms
             }
             else
             {
+                this.checkedListBox4.Items.Clear();
                 this.checkedListBox4.Items.Add("No hay préstamos registrados");
                 this.checkedListBox4.Enabled = false;
             }
