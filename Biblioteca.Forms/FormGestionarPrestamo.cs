@@ -24,11 +24,6 @@ namespace Biblioteca.Forms
             biblioteca = bibliotecaNegocio;
             prestamo = prestamoOrigen;
 
-            if (!prestamo.FechaBajaReal.Equals(null))
-            {
-                dateTimePicker2.Enabled = false;
-            }
-
             textBox1.Text = prestamo.Id.ToString();
             textBox4.Text = prestamo.IdCliente.ToString();
             textBox3.Text = prestamo.NombreEjemplar;
@@ -49,7 +44,7 @@ namespace Biblioteca.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (!dateTimePicker2.Equals(null))
+            if (dateTimePicker2.Text != "")
             {
                 MessageBox.Show("El ejemplar ya fue devuelto");
             }
