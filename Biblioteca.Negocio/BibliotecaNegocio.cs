@@ -346,6 +346,7 @@ namespace Biblioteca.Negocio
 
             if (result.IsOk)
             {
+                ejemplar.NombreLibro = this.BuscarLibroById(ejemplar.IdLibro).Titulo;
                 this._ejemplares.Add(ejemplar);
                 return result.Id;
             }
