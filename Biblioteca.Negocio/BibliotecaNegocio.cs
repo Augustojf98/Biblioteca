@@ -262,7 +262,8 @@ namespace Biblioteca.Negocio
                 throw new Exception("Hay campos sin completar");
             }
 
-            Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToShortDateString(), fechaNacimiento.ToShortDateString(), activo,dni, nombre, apellido, direccion, telefono, mail);
+            //Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToShortDateString(), fechaNacimiento.ToShortDateString(), activo,dni, nombre, apellido, direccion, telefono, mail);
+            Cliente cliente = new Cliente(idNuevoCliente, DateTime.Now.ToString("yyyy-MM-dd"), fechaNacimiento.ToString("yyyy-MM-dd"), activo,dni, nombre, apellido, direccion, telefono, mail);
 
             foreach (Cliente c in clientes)
             {
