@@ -79,17 +79,19 @@ namespace Biblioteca.Datos
                 throw new Exception("El usuario de interacción con el servidor es incorrecto.");
 
             NameValueCollection n = new NameValueCollection();
-            n.Add("Id", cliente.Id.ToString());
+            n.Add("id", cliente.Id.ToString());
             n.Add("DNI", cliente.DNI.ToString());
             n.Add("Nombre", cliente.Nombre);
             n.Add("Apellido", cliente.Apellido);
             n.Add("Direccion", cliente.Direccion);
             n.Add("Usuario", usuarioUtilizado);
             n.Add("Host", Dns.GetHostByName(hostName).AddressList[0].ToString());
-            n.Add("Mail", cliente.Email); // STRING
+            n.Add("Email", cliente.Email); // STRING
             n.Add("Telefono", cliente.Telefono.ToString()); // INT
-            n.Add("FechaAlta", cliente.FechaAlta.ToShortDateString()); // DateTime
-            n.Add("FechaNacimiento", cliente.FechaNacimiento.ToShortDateString()); // DateTime
+            //n.Add("FechaAlta", cliente.FechaAlta.ToShortDateString()); // DateTime
+            n.Add("FechaAlta", cliente.FechaAlta.ToString("yyyy-MM-dd")); // DateTime
+            n.Add("FechaNacimiento", cliente.FechaNacimiento.ToString("yyyy-MM-dd")); // DateTime
+            //n.Add("FechaNacimiento", cliente.FechaNacimiento.ToShortDateString()); // DateTime
             n.Add("Activo", cliente.Activo.ToString()); // bool
             return n;
         }
